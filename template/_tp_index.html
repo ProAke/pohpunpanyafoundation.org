@@ -69,7 +69,7 @@
             <div class="colmap w-col w-col-6">
                 <div class="align-items-center">
                     <address id="pppy_mapblock" class="pppy_mapblock">
-                        <img src="images/2567/map-nan3.png" width="390" height="100%" alt="แผนที่" id="pppy-map" class="pppy_map">
+                        <img src="images/map-nan3.png" width="390" height="100%" alt="แผนที่" id="pppy-map" class="pppy_map">
                     </address>
                 </div>
             </div>
@@ -114,40 +114,10 @@
         let sortedDistricts;
         let mapImage;
         if (year === '2567') {
-            sortedDistricts = [{
-                name: "ทีมอำเภอเมือง",
-                link: "https://pppy.playdigital.co.th/schools/mueang-nplant"
-            }, {
-                name: "ทีมอำเภอท่าวังผา",
-                link: "https://pppy.playdigital.co.th/schools/thawungpa-spakaitee"
-            }, {
-                name: "ทีมอำเภอเวียงสา",
-                link: "https://pppy.playdigital.co.th/schools/weangsa-puengpiknan"
-            }, {
-                name: "ทีมอำเภอบ่อเกลือ",
-                link: "https://pppy.playdigital.co.th/schools/bokluea-sanstyle"
-            }, {
-                name: "ทีมอำเภอภูเพียง",
-                link: "https://pppy.playdigital.co.th/schools/phuphiang-freshhearb"
-            }, {
-                name: "ทีมอำเภอสองแคว",
-                link: "https://pppy.playdigital.co.th/schools/phuphiang-freshhearb"
-            }, {
-                name: "ทีมอำเภอนาน้อย",
-                link: "https://pppy.playdigital.co.th/schools/songkwae-krafturai"
-            }, {
-                name: "ทีมอำเภอนาหมื่น",
-                link: "https://pppy.playdigital.co.th/schools/nahmuen-bun"
-            }, {
-                name: "ทีมอำเภอปัว",
-                link: "https://pppy.playdigital.co.th/schools/pua-supawit"
-            }, {
-                name: "ทีมอำเภอแม่จริม",
-                link: "https://pppy.playdigital.co.th/schools/maejrim-uniform"
-            }];
+            sortedDistricts = [...districts]; // Copy the array
             mapImage = 'images/map-nan3.png'; // Image for year 2567
         } else {
-            sortedDistricts = districts;
+            sortedDistricts = [...districts];
             mapImage = 'images/map-nan2.png'; // Image for year 2566
         }
 
@@ -164,16 +134,16 @@
 
     function chooseDistrict(district) {
         const districtImages = {
-            "ทีมอำเภอเมือง": "images/team_เมือง-map.png",
-            "ทีมอำเภอท่าวังผา": "images/team_ท่าวังผา-map.png",
-            "ทีมอำเภอเวียงสา": "images/team_เวียงสา-map.png",
-            "ทีมอำเภอบ่อเกลือ": "images/team_บ่อเกลือ-map.png",
-            "ทีมอำเภอภูเพียง": "images/team_ภูเพียง-map.png",
-            "ทีมอำเภอสองแคว": "images/team_สองแคว-map.png",
-            "ทีมอำเภอนาน้อย": "images/team_นาน้อย-map.png",
-            "ทีมอำเภอนาหมื่น": "images/team_นาหมื่น-map.png",
-            "ทีมอำเภอปัว": "images/team_ปัว-map.png",
-            "ทีมอำเภอแม่จริม": "images/team_แม่จริม-map.png"
+            "ทีมอำเภอเมือง": "images/2567/teams-map/team_เมือง-map.png",
+            "ทีมอำเภอท่าวังผา": "images/2567/teams-map/team_ท่าวังผา-map.png",
+            "ทีมอำเภอเวียงสา": "images/2567/teams-map/team_เวียงสา-map.png",
+            "ทีมอำเภอบ่อเกลือ": "images/2567/teams-map/team_บ่อเกลือ-map.png",
+            "ทีมอำเภอภูเพียง": "images/2567/teams-map/team_ภูเพียง-map.png",
+            "ทีมอำเภอสองแคว": "images/2567/teams-map/team_สองแคว-map.png",
+            "ทีมอำเภอนาน้อย": "images/2567/teams-map/team_นาน้อย-map.png",
+            "ทีมอำเภอนาหมื่น": "images/2567/teams-map/team_นาหมื่น-map.png",
+            "ทีมอำเภอปัว": "images/2567/teams-map/team_ปัว-map.png",
+            "ทีมอำเภอแม่จริม": "images/2567/teams-map/team_แม่จริม-map.png"
         };
 
         const mapImage = districtImages[district] || 'images/map-nan2.png';
@@ -189,9 +159,10 @@
 
     // Default to year 2567 on page load
     document.addEventListener("DOMContentLoaded", function() {
-        chooseYear(2567);
+        chooseYear('2567');
     });
 </script>
+
 
 <style>
     .dropdown-label {

@@ -36,6 +36,8 @@
 </section>
 
 
+
+
 <section class="pppy_all_camps">
     <div class="container">
         <div class="pppy_map_section w-row">
@@ -46,27 +48,17 @@
                     <img src="images/logo_pppy_camplogo.png" loading="lazy" sizes="(max-width: 1439px) 20px, 1vw" srcset="images/logo_pppy_camplogo-p-500.png 500w, images/logo_pppy_camplogo.png 738w" alt="" class="pppycamp_1" style="width: 100%;">
 
                     <!-- Year Dropdown -->
-                    <div data-hover="false" data-delay="0" class="dropdown_province w-dropdown" style="margin-bottom:0;">
-                        <div class="drp_campep w-dropdown-toggle" id="w-dropdown-toggle-3" aria-controls="w-dropdown-list-3" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
-                            <div class="w-icon-dropdown-toggle" aria-hidden="true"></div>
-                            <div class="drp_camp_text" id="drp_camp_text_model">รุ่นที่ 2567</div>
-                        </div>
-                        <nav class="drp_campyep w-dropdown-list" id="w-dropdown-list-3" aria-labelledby="w-dropdown-toggle-3">
-                            <a href="#" id="year2567" class="drp_campyep_list w-dropdown-link" onclick="chooseYear(2567)" tabindex="0">2567</a>
-                            <a href="#" id="year2566" class="drp_campyep_list w-dropdown-link" onclick="chooseYear(2566)" tabindex="0">2566</a>
-                        </nav>
-                    </div>
+                    <label for="yearSelect" class="dropdown-label">เลือกปี</label>
+                    <select id="yearSelect" onchange="chooseYear(this.value)" class="dropdown-select">
+                        <option value="2567">2567</option>
+                        <option value="2566">2566</option>
+                    </select>
 
-                    <!-- Province Dropdown -->
-                    <div data-hover="false" data-delay="0" class="dropdown_province w-dropdown" style="margin-bottom:0;">
-                        <div class="drp_campep w-dropdown-toggle" id="w-dropdown-toggle-4" aria-controls="listProvince" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
-                            <div class="w-icon-dropdown-toggle" aria-hidden="true"></div>
-                            <div class="drp_camp_text" id="drp_camp_text_province">รายชื่อจังหวัด อำเภอ</div>
-                        </div>
-                        <nav class="drp_campyep w-dropdown-list" id="listProvince" aria-labelledby="w-dropdown-toggle-4">
-                            <!-- Districts will be dynamically loaded here -->
-                        </nav>
-                    </div>
+                    <!-- District Dropdown -->
+                    <label for="districtSelect" class="dropdown-label">เลือกอำเภอ</label>
+                    <select id="districtSelect" onchange="chooseDistrict(this.value)" class="dropdown-select">
+                        <!-- Districts will be dynamically loaded here -->
+                    </select>
 
                     <!-- Alumni Directory Button -->
                     <a href="https://pppy.playdigital.co.th/alumni-directory" class="btn_grad_pppy w-button" style="margin-top: 1px;">ทำเนียบรุ่นศิษย์เก่า เพาะพันธุ์ปัญญาแคมป์</a>
@@ -121,7 +113,7 @@
 
         let sortedDistricts;
         let mapImage;
-        if (year === 2567) {
+        if (year === '2567') {
             sortedDistricts = [{
                 name: "ทีมอำเภอเมือง",
                 link: "https://pppy.playdigital.co.th/schools/mueang-nplant"
@@ -153,63 +145,71 @@
                 name: "ทีมอำเภอแม่จริม",
                 link: "https://pppy.playdigital.co.th/schools/maejrim-uniform"
             }];
-            mapImage = 'images/2567/map-nan3.png'; // Image for year 2567
+            mapImage = 'images/map-nan3.png'; // Image for year 2567
         } else {
             sortedDistricts = districts;
             mapImage = 'images/map-nan2.png'; // Image for year 2566
         }
 
-        // Update dropdown list with sorted districts
-        let listHtml = sortedDistricts.map((district, index) =>
-            `<a href="${district.link}" id="district${index+1}" class="drp_province_list w-dropdown-link" onclick="chooseDistrict('${district.name}')" tabindex="0">
-                ${district.name}
-                <img src="images/arrow-icon.png" alt="Arrow" class="district-arrow">
-            </a>`
+        // Update district dropdown with sorted districts
+        let districtHtml = sortedDistricts.map(district =>
+            `<option value="${district.name}" data-link="${district.link}">${district.name}</option>`
         ).join('');
 
-        document.getElementById('listProvince').innerHTML = listHtml;
-
-        // Update selected year text
-        document.getElementById('drp_camp_text_model').innerText = `รุ่นที่ ${year}`;
+        document.getElementById('districtSelect').innerHTML = districtHtml;
 
         // Update map image
         document.getElementById('pppy-map').src = mapImage;
     }
 
     function chooseDistrict(district) {
-        // Update map image based on selected district
         const districtImages = {
-            "ทีมอำเภอเมือง": "images/2567/teams-map/team_เมือง-map.png",
-            "ทีมอำเภอท่าวังผา": "images/2567/teams-map/team_ท่าวังผา-map.png",
-            "ทีมอำเภอเวียงสา": "images/2567/teams-map/team_เวียงสา-map.png",
-            "ทีมอำเภอบ่อเกลือ": "images/2567/teams-map/team_บ่อเกลือ-map.png",
-            "ทีมอำเภอภูเพียง": "images/2567/teams-map/team_ภูเพียง-map.png",
-            "ทีมอำเภอสองแคว": "images/2567/teams-map/team_สองแคว-map.png",
-            "ทีมอำเภอนาน้อย": "images/2567/teams-map/team_นาน้อย-map.png",
-            "ทีมอำเภอนาหมื่น": "images/2567/teams-map/team_นาหมื่น-map.png",
-            "ทีมอำเภอปัว": "images/2567/teams-map/team_ปัว-map.png",
-            "ทีมอำเภอแม่จริม": "images/2567/teams-map/team_แม่จริม-map.png"
+            "ทีมอำเภอเมือง": "images/team_เมือง-map.png",
+            "ทีมอำเภอท่าวังผา": "images/team_ท่าวังผา-map.png",
+            "ทีมอำเภอเวียงสา": "images/team_เวียงสา-map.png",
+            "ทีมอำเภอบ่อเกลือ": "images/team_บ่อเกลือ-map.png",
+            "ทีมอำเภอภูเพียง": "images/team_ภูเพียง-map.png",
+            "ทีมอำเภอสองแคว": "images/team_สองแคว-map.png",
+            "ทีมอำเภอนาน้อย": "images/team_นาน้อย-map.png",
+            "ทีมอำเภอนาหมื่น": "images/team_นาหมื่น-map.png",
+            "ทีมอำเภอปัว": "images/team_ปัว-map.png",
+            "ทีมอำเภอแม่จริม": "images/team_แม่จริม-map.png"
         };
 
         const mapImage = districtImages[district] || 'images/map-nan2.png';
         document.getElementById('pppy-map').src = mapImage;
 
-        // Update province text
-        document.getElementById('drp_camp_text_province').innerText = district;
+        // Redirect to the district's page if needed
+        const selectedOption = document.getElementById('districtSelect').selectedOptions[0];
+        const link = selectedOption.getAttribute('data-link');
+        if (link) {
+            window.location.href = link;
+        }
     }
 
     // Default to year 2567 on page load
-    chooseYear(2567);
+    document.addEventListener("DOMContentLoaded", function() {
+        chooseYear(2567);
+    });
 </script>
 
 <style>
-    .district-arrow {
-        width: 15px;
-        height: auto;
-        margin-left: 10px;
-        vertical-align: middle;
+    .dropdown-label {
+        margin-bottom: 5px;
+        display: block;
+        font-weight: bold;
+    }
+    
+    .dropdown-select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
     }
 </style>
+
 
 
 

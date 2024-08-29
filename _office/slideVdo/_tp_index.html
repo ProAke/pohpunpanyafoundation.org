@@ -1,0 +1,63 @@
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">{backend_menu}</h3> {comment}
+                  </div>
+                  <div class="card-body border-bottom py-3">
+                    <div class="d-flex">
+                      <div class="text-secondary">
+                        <a class="btn btn-primary" href="new.php">เพิ่ม</a>
+                      </div>
+                      <!-- <div class="ms-auto text-secondary">
+                        Search:
+                        <div class="ms-2 d-inline-block">
+                          <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+<form action="" method="post" name="S1">
+<input type="hidden" name="action" value="sort"  />
+                    <table class="table card-table table-vcenter text-nowrap datatable">
+                      <thead>
+                        <tr>
+                          <th class="w-1" style="border-right: 1px solid #dbdfe4;">No.</th>
+                          <th style="border-right: 1px solid #dbdfe4;">Title</th>
+                          <th style="border-right: 1px solid #dbdfe4;"><input type="submit" value="Update Sort" class="btn btn-success" /></th>
+                          <th style="border-right: 1px solid #dbdfe4;"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- START BLOCK : DATA -->
+                        <tr>
+                          <td style="border-right: 1px solid #dbdfe4;"><span class="text-secondary">{no}</span></td>
+                          <td style="border-right: 1px solid #dbdfe4;">{page}</td>
+                          <td style="border-right: 1px solid #dbdfe4;"><input type="text" value="{order}" name="order[]" size="3" />
+                                    <input type="hidden" name="id[]" value="{id}" /></td>
+                          <td class="text-end">
+                            <a href="edit.php?id={id}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                               <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                               <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                               <path d="M16 5l3 3"></path>
+                            </svg></a>
+
+                            <a href="index.php?action=delete&id={id}"  onclick="return confirm('Do you want to delete ?')"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                               <path d="M4 7l16 0"></path>
+                               <path d="M10 11l0 6"></path>
+                               <path d="M14 11l0 6"></path>
+                               <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                               <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                            </svg></a>
+                          </td>
+                        </tr>
+                        <!-- END BLOCK : DATA -->
+                        
+                      </tbody>
+                    </table>
+</form>                    
+                  </div>
+                </div>
+              </div>

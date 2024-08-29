@@ -97,7 +97,7 @@ $tableIndexSlideCampDetail				= 	"tb_index_main_slide_camp_detail";
 
 $tableMessage 						= 	"tb_message";
 $tableMember 						= 	"tb_member";
-$tableMembersLogin					= 	"tb_members_login"; //ตารางสมาชิกที่เข้าสู่ระบบทั้งหมด
+$tableMembersLogin					= 	"tb_members_login"; 
 $tableMemberAddress					= 	"tb_member_address";
 $tableMailMessage 					= 	"tb_mail_message";
 $tableWebMil 						= 	"tb_mail_message";

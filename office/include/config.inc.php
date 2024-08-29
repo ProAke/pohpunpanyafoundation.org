@@ -7,20 +7,23 @@ Website : https://www.vpslive.com
 Copyright (C) 2021-2025, VPS Live Digital togethers all rights reserved.
  *****************************************************************/
 
-
 // Setting
 $Brand 		= "มูลนิธิเพาะพันธุ์ปัญญา";
 $Copyright 	= "Play digital Co.,Ltd.";
 $Powerby 	= "อ.พี่เอก";
-
+$copyYear   = "2023-2024";
 // Database 
+
+
 $db_config = array(
-	"host" => "localhost",
-	"user" => "pacific_pppy",
-	"pass" => "3gjyG8?57",
-	"dbname" => "pppy_web",
-	"charset" => "utf8"
+    "host" => "localhost",
+    "user" => "pohpun_web",
+    "pass" => "x@8Vk99c4",
+    "dbname" => "pohpun_web",
+    "charset" => "utf8",
+    "port" => 3306 // Add a default port value if it is not set
 );
+
 
 
 
@@ -65,7 +68,8 @@ $tableAdmin 						= 	"tb_admin_user";
 $tableAdminMenu 					= 	"tb_admin_menu";
 $tableMessage 						= 	"tb_message";
 $tableMember 						= 	"tb_member";
-$tableMembersLogin					= 	"tb_members_login"; //ตารางสมาชิกที่เข้าสู่ระบบทั้งหมด
+$tableMembersLogin					= 	"tb_members_login"; 
+
 $tableMemberAddress					= 	"tb_member_address";
 $tableMailMessage 					= 	"tb_mail_message";
 $tableWebMil 						= 	"tb_mail_message";
@@ -115,20 +119,9 @@ if (empty($_SESSION['file_upload'])) $_SESSION['file_upload'] = array();
 $conn = @new mysqli($db_config["host"], $db_config["user"], $db_config["pass"], $db_config["dbname"]);
 //$conn->set_charset($db_config["charset"]);
 
-/*
 
-if ($_SESSION["lang"] == "") {
-	$_SESSION["lang"] = "_th";
-}
-if ($_GET['lang'] != "") {
-	unset($_SESSION["lang"]);
-	if ($_GET['lang'] == "th") {
-		$_SESSION["lang"] = "_th";
-	} else {
-		$_SESSION["lang"] = "_eng";
-	}
-}
-*/
+
+
 $_SESSION["lang"] ??= "_th";
 
 if (isset($_GET['lang']) && $_GET['lang'] != "") {

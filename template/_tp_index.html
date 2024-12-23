@@ -9,11 +9,16 @@
         <div class="right-arrow w-slider-arrow-right">
             <div class="icon-2 w-icon-slider-right"></div>
         </div>
-        <div class="slide-nav w-slider-nav w-slider-nav-invert w-round"></div>
+     <div class="slide-nav 
+     w-slider-nav 
+     w-slider-nav-invert 
+     w-round main-slidedot" id="smartdot"></div>   
     </div>
+    
+    
 </section>
 
-<section class="vdo_gallery">
+<section class="vdo_gallery" style="padding-top: 50px;">
     <div class="container-index_vdo">
         <a href="{url_main}/vdo-gallery" class="nag-buttontop w-button">
             วิดีโอแกลเลอรี
@@ -34,768 +39,315 @@
         </div>
     </div>
 </section>
-
-<section class="pppy_all_camps" style="display: none;">
-    <div class="container">
-        <div class="pppy_map_section w-row">
-            <div class="coldrop w-col w-col-6">
-                <div class="w-layout-blockcontainer container-19 w-container">
-
-                    <img src="images/logo_pppy_camplogo.png" loading="lazy" sizes="(max-width: 1439px) 20px, 1vw" srcset="images/logo_pppy_camplogo-p-500.png 500w, images/logo_pppy_camplogo.png 738w" alt="{pppy_name}" class="pppycamp_1" style="width: 100%;">
-
-
-                    <a href="{url_main}/pohpunpanya-camp" class="btn_pppy_map w-button">รายละเอียดโครงการ</a>
-                    <div data-hover="false" data-delay="0" class="dropdown_province w-dropdown" style="margin-bottom:0;">
-                        <div class="drp_campep w-dropdown-toggle">
-                            <div class="w-icon-dropdown-toggle"></div>
-                            <div class="drp_camp_text" id="drp_camp_text_model">รุ่นปี 2566</div>
-                        </div>
-                        <nav class="drp_campyep w-dropdown-list">
-                            {arrayCampModel}
-                        </nav>
-                    </div>
-                    <div data-hover="false" data-delay="0" class="dropdown_province w-dropdown" style="margin-bottom:0;">
-                        <div class="drp_campep w-dropdown-toggle">
-                            <div class="w-icon-dropdown-toggle"></div>
-                            <div class="drp_camp_text" id="drp_camp_text_province">รายชื่อจังหวัด อำเภอ</div>
-                        </div>
-                        <nav class="drp_campyep w-dropdown-list" id="listProvince">
-                            {arrayCampProvince}
-                        </nav>
-                    </div>
-                    <div data-hover="false" data-delay="0" class="dropdown_schoollist w-dropdown" style="margin-bottom:0;">
-                        <div class="drp_camp w-dropdown-toggle">
-                            <div class="w-icon-dropdown-toggle"></div>
-                            <div class="drp_camp_text">รายชื่อโรงเรียนที่เข้าร่วมโครงการ</div>
-                        </div>
-                        <nav class="drp_campschool w-dropdown-list" id="listSchool">
-                            {arrayCampSchool}
-                        </nav>
-                    </div>
-                    <a href="{url_main}/alumni-directory" class="btn_grad_pppy w-button" style="margin-top: 1px;">ทำเนียบรุ่นศิษย์เก่า เพาะพันธุ์ปัญญาแคมป์</a>
-                </div>
-            </div>
-            <style>
-                .w-dropdown {
-                    position: static;
-                }
-                
-                .w-dropdown-list {
-                    min-width: auto;
-                }
-                
-                .drp_campyep.w--open,
-                .drp_campschool.w--open,
-                .drp_camppartner.w--open {
-                    margin-bottom: 0;
-                    position: absolute;
-                    min-width: 90%;
-                    z-index: 999;
-                }
-            </style>
-            <style type="text/css">
-                .tree {
-                    display: none;
-                }
-                
-                .tree.treeDemo {
-                    display: none;
-                }
-                
-                .treeView {
-                    display: none;
-                    z-index: 99;
-                    position: absolute;
-                    width: 300px;
-                    border: 3px solid #119c4a;
-                    background-color: #ffffff;
-                    padding: 10px 10px 10px 70px;
-                    text-align: left;
-                    top: 3px;
-                }
-                
-                .treeView>img {
-                    position: absolute;
-                    left: -60px;
-                    bottom: -3px;
-                    height: 80px;
-                }
-                
-                .treeView>span {
-                    font-size: 40px;
-                    color: #fff;
-                    position: absolute;
-                    z-index: 9;
-                    top: 45%;
-                    left: -5%;
-                }
-                
-                .treeView>h4 {
-                    margin: 0;
-                    color: #119c4a;
-                    font-weight: bold;
-                }
-                
-                .treeView>p {
-                    margin: 0;
-                }
-                
-                .treeView>p>a {
-                    margin: 0;
-                    color: #119c4a;
-                }
-                
-                .btn_province {
-                    position: absolute;
-                    bottom: 25%;
-                    right: 5%;
-                    color: #ffffff;
-                    background-color: #837670;
-                    padding: 20px 20px;
-                    font-size: 30px;
-                }
-                /*  .pppy_map {height: 450px;}*/
-                
-                .pppy_map_section {
-                    display: block;
-                }
-                
-                .pppy_slide2,
-                .pppy_slide3 {
-                    text-align: center;
-                }
-                
-                @media screen and (min-width: 375px) {
-                    /*  .pppy_map {height: 540px;}*/
-                    .btn_province {
-                        right: 10%;
-                    }
-                }
-            </style>
-            <script type="text/javascript">
-                function chooseModal(argument) {
-                    // $(".tree.treeDemo").hide();
-                    // $(".treeModel"+argument).show();
-                    $("#w-dropdown-list-3").removeClass('w--open');
-
-                    $.ajax({
-                        type: "POST",
-                        url: "loadData",
-                        data: 'action=loadProvince&model=' + argument,
-                        success: function(html) {
-                            // console.log(html)
-                            // $("#message").html('บันทึกข้อมูลแล้ว');
-                            const myArray = html.split("|");
-                            $("#listProvince").html(myArray[0]);
-                            $("#listSchool").html(myArray[1]);
-                            // $("#listTree").html(myArray[2]);
-                            // $("#listProvince").css(html);
-                        },
-                        beforeSend: function() {
-                            // $("#message").html('กำลังบันทึกข้อมูล');
-                        }
-                    });
-                    // console.log(argument)
-                    $("#drp_camp_text_model").html('รุ่นที่ ' + argument);
-                }
-
-                function chooseModalOver(argument) {
-                    // $(".tree.treeDemo").hide();
-                    // $(".treeModel"+argument).show();
-                    // $(".treeModel"+argument).css("display", "block");
-                    // $("#drp_camp_text_model").html('รุ่นที่ '+argument);
-                }
-
-                function chooseCity(argument) {
-                    // $(".tree").hide();
-                    // $(".treeCity"+argument).show();
-                    $("#listProvince").removeClass('w--open');
-                    $.ajax({
-                        type: "POST",
-                        url: "loadData",
-                        data: 'action=loadSchoolCity&province=' + argument,
-                        success: function(html) {
-                            // console.log(html)
-                            // $("#message").html('บันทึกข้อมูลแล้ว');
-                            $("#listSchool").html(html);
-                            // $("#listSchool").css(html);
-                        },
-                        beforeSend: function() {
-                            // $("#message").html('กำลังบันทึกข้อมูล');
-                        }
-                    });
-                    // console.log($("#province"+argument).data('title'))
-                    $("#drp_camp_text_province").html($("#province" + argument).data('title'));
-                }
-
-                function chooseDistrict(argument) {
-                    // $(".tree").hide();
-                    // $(".treeDistrict"+argument).show();
-                    $("#listProvince").removeClass('w--open');
-                    $.ajax({
-                        type: "POST",
-                        url: "loadData",
-                        data: 'action=loadSchool&district=' + argument,
-                        success: function(html) {
-                            // console.log(html)
-                            // $("#message").html('บันทึกข้อมูลแล้ว');
-                            $("#listSchool").html(html);
-                            // $("#listSchool").css(html);
-                        },
-                        beforeSend: function() {
-                            // $("#message").html('กำลังบันทึกข้อมูล');
-                        }
-                    });
-                    $("#drp_camp_text_province").html($("#district" + argument).data('title'));
-                }
-
-                function viewSchool(argument) {
-                    $(".treeView").hide();
-                    $(".treeViewSchool" + argument).show();
-                }
-
-                function closeViewSchhol(argument) {
-                    $(".treeView").hide();
-                }
-            </script>
-            <div class="colmap w-col w-col-6">
-                <div class="align-items-center">
-                    <address id="pppy_mapblock" class="pppy_mapblock"><img src="images/map-nan2.png" width="390" height="100%" alt="โรงเรียนที่เข้าร่วมโครงการเพาะพันธ์ปัญญาแคมป์ ครั้งที่ 1 จังหวัดน่าน" id="pppy-map" class="pppy_map"></address>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
 <section class="pppy_all_camps">
     <div class="container">
         <div class="pppy_map_section w-row">
+            <!-- Left Column: Dropdowns for Year, District, and School -->
             <div class="coldrop w-col w-col-6">
                 <div class="w-layout-blockcontainer container-19 w-container">
 
-                    <img src="images/logo_pppy_camplogo.png" loading="lazy" sizes="(max-width: 1439px) 20px, 1vw" srcset="images/logo_pppy_camplogo-p-500.png 500w, images/logo_pppy_camplogo.png 738w" alt="{pppy_name}" class="pppycamp_1" style="width: 100%;">
+                    <!-- Logo Image -->
+                    <img src="images/logo_pppy_camplogo.png" width="100%" loading="lazy" alt="เพาะพันธุ์ปัญญาแคมป์">
 
-
+                    <!-- Project Details Button -->
                     <a href="{url_main}/pohpunpanya-camp" class="btn_pppy_map w-button">รายละเอียดโครงการ</a>
-                    <div data-hover="false" data-delay="0" class="dropdown_province w-dropdown" style="margin-bottom:0;">
+
+                    <!-- Dropdown for Year Selection -->
+                    <div data-hover="false" data-delay="0" class="dropdown_province w-dropdown" style="margin-bottom:0;" id="yearDropdown">
                         <div class="drp_campep w-dropdown-toggle">
                             <div class="w-icon-dropdown-toggle"></div>
                             <div class="drp_camp_text" id="drp_camp_text_model">รุ่นปี</div>
                         </div>
-                        <nav class="drp_campyep w-dropdown-list">
-                            {arrayCampModel}
-                            <a href="#" id="campmodel2567" class="drp_campyep_list w-dropdown-link" style="display: block;">`รุ่นปี 2567</a>
-                            <a href="#" id="campmodel2566" class="drp_campyep_list w-dropdown-link" style="display: block;">รุ่นปี 2566</a>
+                        <nav class="drp_campyep w-dropdown-list" id="yearDropdownList">
+                            <!-- Options will be dynamically populated here -->
                         </nav>
                     </div>
-                    <div data-hover="false" data-delay="0" class="dropdown_province w-dropdown" style="margin-bottom:0;">
+
+                    <!-- Dropdown for District Selection (Initially Hidden) -->
+                    <div data-hover="false" data-delay="0" class="dropdown_province w-dropdown" style="margin-bottom:0; display:none;" id="districtDropdown">
                         <div class="drp_campep w-dropdown-toggle">
                             <div class="w-icon-dropdown-toggle"></div>
-                            <div class="drp_camp_text" id="drp_camp_text_province">รายชื่อจังหวัด อำเภอ</div>
+                            <div class="drp_camp_text" id="drp_camp_text_province">เลือกทีมอำเภอ</div>
                         </div>
-
-
-
-                        <nav class="drp_campyep w-dropdown-list" id="listProvince" aria-labelledby="w-dropdown-toggle-7">
-                            <a href="#" id="province1" data-title="จ.น่าน" class="drp_province_list top w-dropdown-link" onclick="chooseCity(1)" tabindex="0">จ.น่าน</a><a href="#" id="district1" data-title="อ. เชียงกลาง" class="drp_province_list  w-dropdown-link"
-                                onclick="chooseDistrict(1)" tabindex="0">อ. เชียงกลาง<span style="float: right;">2 โรงเรียน</span></a><a href="#" id="district2" data-title="อ. ท่าวังผา" class="drp_province_list  w-dropdown-link" onclick="chooseDistrict(2)"
-                                tabindex="0">อ. ท่าวังผา<span style="float: right;">1 โรงเรียน </span></a><a href="#" id="district3" data-title="อ. ปัว" class="drp_province_list  w-dropdown-link" onclick="chooseDistrict(3)" tabindex="0">อ. ปัว<span style="float: right;">1 โรงเรียน </span></a>
-                            <a href="#" id="district4" data-title="อ. เมืองน่าน" class="drp_province_list  w-dropdown-link" onclick="chooseDistrict(4)" tabindex="0">อ. เมืองน่าน<span style="float: right;">1 โรงเรียน </span></a><a href="#" id="district5"
-                                data-title="อ. เวียงสา" class="drp_province_list  w-dropdown-link" onclick="chooseDistrict(5)" tabindex="0">อ. เวียงสา<span style="float: right;">2 โรงเรียน</span></a>
-                            <a href="#" id="district6" data-title="อ. นาหมื่น" class="drp_province_list  w-dropdown-link" onclick="chooseDistrict(6)" tabindex="0">อ. นาหมื่น<span style="float: right;">1 โรงเรียน </span></a>
+                        <nav class="drp_campyep w-dropdown-list" id="listProvince">
+                            <!-- Options will be dynamically populated based on the selected year -->
                         </nav>
-
-
-
-
-
-
                     </div>
-                    <div data-hover="false" data-delay="0" class="dropdown_schoollist w-dropdown" style="margin-bottom:0;">
+
+                    <!-- Dropdown for School Selection (Initially Hidden) -->
+                    <div data-hover="false" data-delay="0" class="dropdown_schoollist w-dropdown" style="margin-bottom:0; display:none;" id="schoolDropdown">
                         <div class="drp_camp w-dropdown-toggle">
                             <div class="w-icon-dropdown-toggle"></div>
-                            <div class="drp_camp_text">รายชื่อโรงเรียนที่เข้าร่วมโครงการ</div>
+                            <div class="drp_camp_text" id="drp_camp_text_school">เลือกโรงเรียน</div>
                         </div>
                         <nav class="drp_campschool w-dropdown-list" id="listSchool">
-                            {arrayCampSchool}
+                            <!-- School options will be dynamically populated based on the selected district -->
                         </nav>
                     </div>
+
+                    <!-- Alumni Directory Button -->
                     <a href="{url_main}/alumni-directory" class="btn_grad_pppy w-button" style="margin-top: 1px;">ทำเนียบรุ่นศิษย์เก่า เพาะพันธุ์ปัญญาแคมป์</a>
                 </div>
             </div>
-            <style>
-                .w-dropdown {
-                    position: static;
-                }
-                
-                .w-dropdown-list {
-                    min-width: auto;
-                }
-                
-                .drp_campyep.w--open,
-                .drp_campschool.w--open,
-                .drp_camppartner.w--open {
-                    margin-bottom: 0;
-                    position: absolute;
-                    min-width: 90%;
-                    z-index: 999;
-                }
-            </style>
-            <style type="text/css">
-                .tree {
-                    display: none;
-                }
-                
-                .tree.treeDemo {
-                    display: none;
-                }
-                
-                .treeView {
-                    display: none;
-                    z-index: 99;
-                    position: absolute;
-                    width: 300px;
-                    border: 3px solid #119c4a;
-                    background-color: #ffffff;
-                    padding: 10px 10px 10px 70px;
-                    text-align: left;
-                    top: 3px;
-                }
-                
-                .treeView>img {
-                    position: absolute;
-                    left: -60px;
-                    bottom: -3px;
-                    height: 80px;
-                }
-                
-                .treeView>span {
-                    font-size: 40px;
-                    color: #fff;
-                    position: absolute;
-                    z-index: 9;
-                    top: 45%;
-                    left: -5%;
-                }
-                
-                .treeView>h4 {
-                    margin: 0;
-                    color: #119c4a;
-                    font-weight: bold;
-                }
-                
-                .treeView>p {
-                    margin: 0;
-                }
-                
-                .treeView>p>a {
-                    margin: 0;
-                    color: #119c4a;
-                }
-                
-                .btn_province {
-                    position: absolute;
-                    bottom: 25%;
-                    right: 5%;
-                    color: #ffffff;
-                    background-color: #837670;
-                    padding: 20px 20px;
-                    font-size: 30px;
-                }
-                /*  .pppy_map {height: 450px;}*/
-                
-                .pppy_map_section {
-                    display: block;
-                }
-                
-                .pppy_slide2,
-                .pppy_slide3 {
-                    text-align: center;
-                }
-                
-                @media screen and (min-width: 375px) {
-                    /*  .pppy_map {height: 540px;}*/
-                    .btn_province {
-                        right: 10%;
-                    }
-                }
-            </style>
-            <script type="text/javascript">
-                function chooseModal(argument) {
-                    // $(".tree.treeDemo").hide();
-                    // $(".treeModel"+argument).show();
-                    $("#w-dropdown-list-3").removeClass('w--open');
 
-                    $.ajax({
-                        type: "POST",
-                        url: "loadData",
-                        data: 'action=loadProvince&model=' + argument,
-                        success: function(html) {
-                            // console.log(html)
-                            // $("#message").html('บันทึกข้อมูลแล้ว');
-                            const myArray = html.split("|");
-                            $("#listProvince").html(myArray[0]);
-                            $("#listSchool").html(myArray[1]);
-                            // $("#listTree").html(myArray[2]);
-                            // $("#listProvince").css(html);
-                        },
-                        beforeSend: function() {
-                            // $("#message").html('กำลังบันทึกข้อมูล');
-                        }
-                    });
-                    // console.log(argument)
-                    $("#drp_camp_text_model").html('รุ่นที่ ' + argument);
-                }
-
-                function chooseModalOver(argument) {
-                    // $(".tree.treeDemo").hide();
-                    // $(".treeModel"+argument).show();
-                    // $(".treeModel"+argument).css("display", "block");
-                    // $("#drp_camp_text_model").html('รุ่นที่ '+argument);
-                }
-
-                function chooseCity(argument) {
-                    // $(".tree").hide();
-                    // $(".treeCity"+argument).show();
-                    $("#listProvince").removeClass('w--open');
-                    $.ajax({
-                        type: "POST",
-                        url: "loadData",
-                        data: 'action=loadSchoolCity&province=' + argument,
-                        success: function(html) {
-                            // console.log(html)
-                            // $("#message").html('บันทึกข้อมูลแล้ว');
-                            $("#listSchool").html(html);
-                            // $("#listSchool").css(html);
-                        },
-                        beforeSend: function() {
-                            // $("#message").html('กำลังบันทึกข้อมูล');
-                        }
-                    });
-                    // console.log($("#province"+argument).data('title'))
-                    $("#drp_camp_text_province").html($("#province" + argument).data('title'));
-                }
-
-                function chooseDistrict(argument) {
-                    // $(".tree").hide();
-                    // $(".treeDistrict"+argument).show();
-                    $("#listProvince").removeClass('w--open');
-                    $.ajax({
-                        type: "POST",
-                        url: "loadData",
-                        data: 'action=loadSchool&district=' + argument,
-                        success: function(html) {
-                            // console.log(html)
-                            // $("#message").html('บันทึกข้อมูลแล้ว');
-                            $("#listSchool").html(html);
-                            // $("#listSchool").css(html);
-                        },
-                        beforeSend: function() {
-                            // $("#message").html('กำลังบันทึกข้อมูล');
-                        }
-                    });
-                    $("#drp_camp_text_province").html($("#district" + argument).data('title'));
-                }
-
-                function viewSchool(argument) {
-                    $(".treeView").hide();
-                    $(".treeViewSchool" + argument).show();
-                }
-
-                function closeViewSchhol(argument) {
-                    $(".treeView").hide();
-                }
-            </script>
+            <!-- Right Column: Map Display -->
             <div class="colmap w-col w-col-6">
-                <div class="align-items-center">
-                    <address id="pppy_mapblock" class="pppy_mapblock"><img src="images/2567/map-nan3.png" width="390" height="100%" alt="ทีมที่เข้าร่วมโครงการเพาะพันธ์ปัญญาแคมป์ รุ่นปี 2567" id="pppy-map" class="pppy_map"></address>
-                </div>
+                <img src="{url_main}/upload/2567/map-nan3.webp" width="100%" alt="แผนที่โครงการเพาะพันธุ์ปัญญาแคมป์" id="pppy-map" class="pppy_map">
             </div>
         </div>
     </div>
 </section>
+<section class="partner-pppy" style="background-color: white;">
+    <center><a href="{url_main}/partners" class="nag-buttontop w-button" style="width: auto;margin-top:2%;color:#837670;">พันธมิตรร่วมเพาะพันธุ์ปัญญา</a></center>
 
 
 
-<section class="partner-pppy">
-    <center><a href="{url_main}/partners" class="nag-buttontop w-button" style="width: auto;margin-top:2%;">พันธมิตรร่วมเพาะพันธุ์ปัญญา</a></center>
-    <div data-delay="4000" data-animation="slide" class="partnersliderwrapper w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="12" data-duration="500" data-infinite="true">
-        <div class="w-slider-mask">
-            <div class="partnerslidewrapper w-slide">
-                <p class="partnersubhead">วิทยากรที่เข้าร่วมสร้างแรงบันดาลใจในโครงการ</p>
-                <h2 class="partnersubkey">“แคมป์กล้าเรียน”</h2>
-                <div class="w-layout-hflex flex-block-2">
-                    <div class="team-block-2">
-                        <div class="partner-card"><img src="images/pimjai.png" width="100%" height="100%" loading="lazy" alt="" class="partnerphoto"></div>
-                        <div class="partnerblockinfo">
-                            <h3 class="partnername">ศ.ดร.พิมพ์ใจ ใจเย็น</h3>
-                            <p class="partnersubtext">อธิการบดี<br>สถาบันวิทยสิริเมธี (VISTEC)
-                                <br>&nbsp;</p>
-                            <ul role="list" class="list w-list-unstyled">
-                                <li>
-                                    <a href="#" class="w-inline-block w-lightbox"><img src="images/icon-coa-folder.png" width="100%" height="100%" loading="lazy" width="30" alt="">
-                                        <script type="application/json" class="w-json">
-                                            {
-                                                "items": [{
-                                                    "_id": "651a3040342015fefc8ab435",
-                                                    "origFileName": "popup_1_พิมพ์ใจ.png",
-                                                    "fileName": "popup_1_พิมพ์ใจ.png",
-                                                    "fileSize": 270941,
-                                                    "height": 1600,
-                                                    "url": "images/popup_1_พิมพ์ใจ.png",
-                                                    "width": 800,
-                                                    "caption": "ศ.ดร.พิมพ์ใจ ใจเย็น",
-                                                    "type": "image"
-                                                }],
-                                                "group": "วิทยากร"
-                                            }
-                                        </script>
-                                    </a>
-                                </li>
+    <div class="partnercontainer show">
+        <div class="w-layout-blockcontainer partnergridlist w-container">
 
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-block-2">
-                        <div class="partner-card"><img src="images/nut.png" loading="lazy" alt="" class="partnerphoto"></div>
-                        <div class="partnerblockinfo">
-                            <h3 class="partnername">คุณณัฐวุฒิ พึงเจริญพงศ์</h3>
-                            <p class="partnersubtext">CEO และผู้ก่อตั้ง Ookbee<br>ผู้จัดการกองทุน 500 tuktuks<br>CEO SIX (crypto)</p>
-                            <ul role="list" class="list w-list-unstyled">
-                                <li>
-                                    <a href="#" class="w-inline-block w-lightbox"><img src="images/icon-coa-folder.png" loading="lazy" width="30" alt="">
-                                        <script type="application/json" class="w-json">
-                                            {
-                                                "items": [{
-                                                    "_id": "651a3046d51e49055aa272d5",
-                                                    "origFileName": "popup_2_ณัฐวุฒิ.png",
-                                                    "fileName": "popup_2_ณัฐวุฒิ.png",
-                                                    "fileSize": 237119,
-                                                    "height": 1391,
-                                                    "url": "images/popup_2_ณัฐวุฒิ.png",
-                                                    "width": 800,
-                                                    "caption": "คุณณัฐวุฒิ พึงเจริญพงศ์",
-                                                    "type": "image"
-                                                }],
-                                                "group": "วิทยากร"
-                                            }
-                                        </script>
-                                    </a>
-                                </li>
 
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-block-2">
-                        <div class="partner-card"><img src="images/woranun.png" loading="lazy" alt="" class="partnerphoto"></div>
-                        <div class="partnerblockinfo">
-                            <h3 class="partnername">คุณวรกันต์ ธนโชติวรพงศ์</h3>
-                            <p class="partnersubtext">ร่วมก่อตั้ง บ.มอร์ฟู้ดส์ อินโนเทค จำกัด <br>ผลิตภัณฑ์โปรตีนจากพืช<br>แบรนด์ More Meat</p>
-                            <ul role="list" class="list w-list-unstyled">
-                                <li>
-                                    <a href="#" class="w-inline-block w-lightbox"><img src="images/icon-coa-folder.png" loading="lazy" width="30" alt="">
-                                        <script type="application/json" class="w-json">
-                                            {
-                                                "items": [{
-                                                    "_id": "651a30410a0477eb5c8e45a3",
-                                                    "origFileName": "popup_3_วรกันต์.png",
-                                                    "fileName": "popup_3_วรกันต์.png",
-                                                    "fileSize": 250697,
-                                                    "height": 1395,
-                                                    "url": "images/popup_3_วรกันต์.png",
-                                                    "width": 800,
-                                                    "caption": "คุณวรกันต์ ธนโชติวรพงศ์",
-                                                    "type": "image"
-                                                }],
-                                                "group": "วิทยากร"
-                                            }
-                                        </script>
-                                    </a>
-                                </li>
 
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-block-2">
-                        <div class="partner-card"><img src="images/manoon.png" loading="lazy" alt="" class="partnerphoto"></div>
-                        <div class="partnerblockinfo">
-                            <h3 class="partnername">คุณมนูญ ทนะวัง</h3>
-                            <p class="partnersubtext">เจ้าของ <br>โกโก้ วัลเล่ย์ รีสอร์ท และคาเฟ่ <br>อ.ปัว จังหวัดน่าน</p>
-                            <ul role="list" class="list w-list-unstyled">
-                                <li>
-                                    <a href="#" class="w-inline-block w-lightbox"><img src="images/icon-coa-folder.png" loading="lazy" width="30" alt="">
-                                        <script type="application/json" class="w-json">
-                                            {
-                                                "items": [{
-                                                    "_id": "651a3041b14e72e8d4f0ca14",
-                                                    "origFileName": "popup_4_มนูญ.png",
-                                                    "fileName": "popup_4_มนูญ.png",
-                                                    "fileSize": 259364,
-                                                    "height": 1359,
-                                                    "url": "images/popup_4_มนูญ.png",
-                                                    "width": 800,
-                                                    "caption": "คุณมนูญ ทนะวัง",
-                                                    "type": "image"
-                                                }],
-                                                "group": "วิทยากร"
-                                            }
-                                        </script>
-                                    </a>
-                                </li>
+            <br><br>
+            <h2 class="school-headertext">พันธมิตรร่วมเพาะพันธุ์ปัญญา : <span class="partnersTextinLine">วิทยากร</span> </h2>
 
-                            </ul>
-                        </div>
-                    </div>
+            <br><br>
+            <div class="grid-container">
+                <!-- START BLOCK : ALN66 -->
+                <div class="grid-item">
+                    <a href="#" class="partnerlightbox w-inline-block w-lightbox">
+                        <img src="{photoALN}" loading="lazy" alt="{FullName}">
+                            <script type="application/json" class="w-json">
+                                {popJS}
+                            
+                            </script>
+                        
+                        
+                    </a>
+                </div>
+                <!-- END BLOCK : ALN66 -->
+                <div class="grid-item">
+                    <a href="{main_url}/partners#lecturer" class="partnerlightbox w-inline-block">
+                        <img src="{main_url}/images/icon-all.png" loading="lazy" alt="{FullName}">
+
+                    </a>
                 </div>
             </div>
-            <div class="team-slide-wrapper-2 w-slide">
-                <p class="centered-subheading-3">วิทยากรที่เข้าร่วมสร้างแรงบันดาลใจในโครงการ</p>
-                <h2 class="partnersubkey">“แคมป์กล้าลุย”</h2>
-                <div class="w-layout-hflex flex-block-2">
-                    <div class="team-block-2">
-                        <div class="partner-card"><img src="images/darin.png" width="100%" height="100%" loading="lazy" alt="คุณดาริน สุทธพงษ์" class="partnerphoto"></div>
-                        <div class="team-block-info-2">
-                            <h3 class="partnername">คุณดาริน สุทธพงษ์</h3>
-                            <p class="partnersubtext">CEO Hato Hub</p>
-                            <ul role="list" class="list w-list-unstyled">
-                                <li>
-                                    <a href="#" class="w-inline-block w-lightbox"><img src="images/icon-coa-folder.png" loading="lazy" width="30" height="100%" alt="ประวัติ">
-                                        <script type="application/json" class="w-json">
-                                            {
-                                                "items": [{
-                                                    "_id": "651a30411d65ace284615877",
-                                                    "origFileName": "popup_5_ดาริน.png",
-                                                    "fileName": "popup_5_ดาริน.png",
-                                                    "fileSize": 222311,
-                                                    "height": 1202,
-                                                    "url": "images/popup_5_ดาริน.png",
-                                                    "width": 800,
-                                                    "caption": "คุณดาริน สุทธพงษ์",
-                                                    "type": "image"
-                                                }],
-                                                "group": "วิทยากร"
-                                            }
-                                        </script>
-                                    </a>
-                                </li>
-                                <li class="list-item-2">
-                                    <a href="#" class="partnerlightbox w-inline-block w-lightbox"><img src="images/icon-coa-vdo.png" loading="lazy" width="30" alt="">
-                                        <script type="application/json" class="w-json">
-                                            {
-                                                "items": [{
-                                                    "url": "https://www.youtube.com/watch?v=ybI52-kdpzM",
-                                                    "originalUrl": "https://www.youtube.com/watch?v=ybI52-kdpzM",
-                                                    "width": 940,
-                                                    "height": 528,
-                                                    "thumbnailUrl": "https://i.ytimg.com/vi/ybI52-kdpzM/hqdefault.jpg",
-                                                    "html": "<iframe width=\"940\" height=\"528\" src=\"https://www.youtube.com/embed/ybI52-kdpzM?si=uuJN54mS7INMWCyO&rel=0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
-                                                    "type": "video"
-                                                }],
-                                                "group": "คุณดาริน สุทธพงษ์"
-                                            }
-                                        </script>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-block-2">
-                        <div class="partner-card"><img src="images/siriwat.png" width="100%" height="100%" loading="lazy" alt="คุณศิริวัฒน์ วรเวทวุฒิคุณ" class="partnerphoto"></div>
-                        <div class="team-block-info-2">
-                            <h3 class="partnername">คุณศิริวัฒน์ วรเวทวุฒิคุณ</h3>
-                            <p class="partnersubtext">เจ้าของธุรกิจศิริวัฒน์แซนด์วิช</p>
-                            <ul role="list" class="list w-list-unstyled">
-                                <li>
-                                    <a href="#" class="w-inline-block w-lightbox"><img src="images/icon-coa-folder.png" loading="lazy" width="30" alt="ประวัติ">
-                                        <script type="application/json" class="w-json">
-                                            {
-                                                "items": [{
-                                                    "_id": "651a3042f37897084a263c40",
-                                                    "origFileName": "popup_6_ศิริวัฒน์.png",
-                                                    "fileName": "popup_6_ศิริวัฒน์.png",
-                                                    "fileSize": 182213,
-                                                    "height": 1221,
-                                                    "url": "images/popup_6_ศิริวัฒน์.png",
-                                                    "width": 800,
-                                                    "caption": "คุณศิริวัฒน์ วรเวทวุฒิคุณ",
-                                                    "type": "image"
-                                                }],
-                                                "group": "วิทยากร"
-                                            }
-                                        </script>
-                                    </a>
-                                </li>
-                                <li class="list-item-2">
-                                    <a href="#" class="partnerlightbox w-inline-block w-lightbox"><img src="images/icon-coa-vdo.png" loading="lazy" width="30" alt="">
-                                        <script type="application/json" class="w-json">
-                                            {
-                                                "items": [{
-                                                    "url": "https://www.youtube.com/watch?v=lVUP3VQFgRQ",
-                                                    "originalUrl": "https://www.youtube.com/watch?v=lVUP3VQFgRQ",
-                                                    "width": 940,
-                                                    "height": 528,
-                                                    "thumbnailUrl": "http://i.ytimg.com/vi/lVUP3VQFgRQ/hqdefault.jpg",
-                                                    "html": "<iframe width=\"940\" height=\"528\" src=\"https://www.youtube.com/embed/lVUP3VQFgRQ?si=CimcUWLtIAWj-4E2&rel=0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
-                                                    "type": "video"
-                                                }],
-                                                "group": "คุณศิริวัฒน์ วรเวทวุฒิคุณ"
-                                            }
-                                        </script>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+
+            <br><br>
+            <h2 class="school-headertext pro">พันธมิตรร่วมเพาะพันธุ์ปัญญา : <span class="partnersTextinLine">คณะกรรมการ</span></h2>
+            <br><br>
+
+            <div class="grid-container">
+                <!-- START BLOCK : ALN67 -->
+                <div class="grid-item">
+                    <a href="#" class="partnerlightbox w-inline-block w-lightbox">
+                        <img src="{photoALN}" loading="lazy" alt="{FullName}">
+                        <script type="application/json" class="w-json">
+                            {popJS}
+                        </script>
+                    </a>
+                </div>
+                <!-- END BLOCK : ALN67 -->
+                <div class="grid-item">
+                    <a href="{main_url}/partners#committee" class="partnerlightbox w-inline-block">
+                        <img src="{main_url}/images/icon-all.png" loading="lazy">
+
+                    </a>
                 </div>
             </div>
-            <div class="team-slide-wrapper-2 w-slide">
-                <p class="centered-subheading-3">วิทยากรที่เข้าร่วมสร้างแรงบันดาลใจในโครงการ</p>
-                <h2 class="partnersubkey">“แคมป์กล้าก้าว”</h2>
-                <div class="w-layout-hflex flex-block-2">
-                    <div class="team-block-2">
-                        <div class="partner-card"><img src="images/peanut.png" width="100%" height="100%" loading="lazy" alt="" class="partnerphoto"></div>
-                        <div class="team-block-info-2">
-                            <h3 class="partnername">คุณอารีย์ เพ็ชรรัตน์</h3>
-                            <p class="partnersubtext">กรรมการผู้จัดการ<br>บริษัท บ้านถั่วลิสง จำกัด<br>‍</p>
-                            <ul role="list" class="list w-list-unstyled">
-                                <li>
-                                    <a href="#" class="w-inline-block w-lightbox"><img src="images/icon-coa-folder.png" loading="lazy" width="30" alt="">
-                                        <script type="application/json" class="w-json">
-                                            {
-                                                "items": [{
-                                                    "_id": "651a3041b575d1272c0164e5",
-                                                    "origFileName": "popup_7_อารีย์.png",
-                                                    "fileName": "popup_7_อารีย์.png",
-                                                    "fileSize": 235138,
-                                                    "height": 1417,
-                                                    "url": "images/popup_7_อารีย์.png",
-                                                    "width": 800,
-                                                    "caption": "คุณอารีย์ เพ็ชรรัตน์",
-                                                    "type": "image"
-                                                }],
-                                                "group": "วิทยากร"
-                                            }
-                                        </script>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+
+            <hr style="margin-top: 15px;margin-bottom: 15px;">
+
+            <div class="grid-container-logo">
+                <!-- START BLOCK : LOGOBRANDS -->
+                <a href="{brandUrl}" class="flex-item-logo"><img src="upload/logo_brand/{brandImg}"></a>
+                <!-- END BLOCK : LOGOBRANDS -->
             </div>
+
+
+
+
         </div>
-        <div class="team-slider-arrow-2 w-slider-arrow-left">
-            <div class="w-icon-slider-left"></div>
-        </div>
-        <div class="team-slider-arrow-2 w-slider-arrow-right">
-            <div class="w-icon-slider-right"></div>
-        </div>
-        <div class="team-slider-nav-2 w-slider-nav w-slider-nav-invert w-round"></div>
     </div>
+
+
+
+
+    <style>
+.w-slider-mask{
+}
+.main-slidedot {
+margin-top: 65px;
+}
+
+
+
+
+        .inpartners_h2 {
+            margin-top: 50px;
+            color: #96b759;
+            text-shadow: #000000;
+        }
+        
+        .partnersTextinLine {
+            display: inline;
+            color: #00953b;
+        }
+        
+        .inpartners_h2_subtext {
+            margin-top: -25px;
+            color: #837670;
+            font-size: 28pt;
+        }
+        
+        .white_bg {
+            background-color: white;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* จัดกึ่งกลางในแนวนอน */
+            gap: 2px;
+            /* ปรับ gap ให้เป็น 2px */
+            margin-bottom: 50px;
+            align-content: center;
+            padding: 10px;
+            /* เพิ่ม padding เพื่อให้มีพื้นที่ภายใน */
+            border-radius: 20px;
+            /* ทำให้กรอบนอกเป็นมุมมน */
+            background-color: #ffffff;
+            /* สีพื้นกรอบนอก */
+        }
+        
+        .button-link {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #ededed;
+            color: #666666;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 15px;
+            text-align: center;
+            border: 1px solid #ededed;
+        }
+        
+        .button-link:hover {
+            background-color: #cac9c9;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            /* Default for desktop */
+            gap: 30px;
+            /* Gap for both desktop and iPad */
+            padding: 20px;
+        }
+        
+        .grid-item {
+            text-align: center;
+        }
+        
+        .grid-item img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .grid-item p {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        
+        .grid-container-logo {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            /* แถวละ 9 สำหรับ Desktop */
+            gap: 30px;
+            /* ระยะห่างระหว่างไอเท็ม */
+            padding: 20px;
+        }
+        
+        .grid-item-logo {
+            text-align: center;
+        }
+        
+        .grid-item-logo img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .grid-item-logo p {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        /* Responsive for Mobile */
+        
+        @media (max-width: 1080px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+                /* 2 items per row on mobile */
+                gap: 20px;
+                /* Gap for Mobile */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 items per row on mobile */
+                gap: 20px;
+                /* Gap for Mobile */
+            }
+            .grid-item p {
+                font-size: 16px;
+                /* Smaller font size for mobile */
+                display: block;
+                /* Keep description visible on mobile */
+            }
+            .grid-container-logo {
+                grid-template-columns: repeat(4, 1fr);
+                /* แถวละ 4 สำหรับมือถือ */
+                gap: 20px;
+                /* ระยะห่างระหว่างไอเท็มบนมือถือ */
+            }
+            .grid-item-logo p {
+                font-size: 16px;
+                /* ขนาดฟอนต์ที่เล็กลงบนมือถือ */
+                display: block;
+                /* แสดงข้อความบนมือถือ */
+            }
+        }
+        
+        .flex-container {
+            margin: 50px 0px 80px 0px;
+            display: flex;
+            justify-content: center;
+            /* จัดกึ่งกลาง */
+            align-items: center;
+            /* จัดกึ่งกลางแนวตั้ง (ถ้าจำเป็น) */
+            flex-wrap: wrap;
+            /* ถ้าบล็อกเยอะเกินไปให้ย้ายลงบรรทัดใหม่ */
+            gap: 10px;
+            /* ระยะห่างระหว่างบล็อก */
+        }
+        
+        .flex-item {
+            width: 100px;
+            flex: 0 0 auto;
+            /* ทำให้บล็อกมีขนาดคงที่ */
+            text-align: center;
+            /* จัดกึ่งกลางเนื้อหาภายในบล็อก */
+        }
+    </style>
+
+
+
+
+
+
 </section>
-
-
 <section class="newsandmedia">
 
     <div class="container-newsandmedia">
@@ -834,3 +386,430 @@
     </div>
 
 </section>
+
+
+
+<script type="text/javascript">
+    let currentYear = '2567'; // Set default year
+    const districtData = {
+        '2567': [{
+            name: "ทีมอำเภอเมือง",
+            link: "{main_url}/schools/mueang-nplant",
+            map: "{main_url}/upload/2567/teams-map/team_เมือง-map.webp",
+            schools: [{
+                name: "รร.น่านคริสเตียนศึกษา",
+                link: "{main_url}/schools/mueang-nplant",
+                map: "{main_url}/upload/2567/teams-map/team_เมือง-map.webp"
+            }, {
+                name: "รร.สตรีศรีน่าน",
+                link: "{main_url}/schools/mueang-nplant",
+                map: "{main_url}/upload/2567/teams-map/team_เมือง-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอท่าวังผา",
+            link: "{main_url}/schools/thawungpa-spakaitee",
+            map: "{main_url}/upload/2567/teams-map/team_ท่าวังผา-map.webp",
+            schools: [{
+                name: "รร.เมืองยมวิทยาคาร",
+                link: "{main_url}/schools/thawungpa-spakaitee",
+                map: "{main_url}/upload/2567/teams-map/team_ท่าวังผา-map.webp"
+            }, {
+                name: "รร.หนองบัวพิทยาคม",
+                link: "{main_url}/schools/thawungpa-spakaitee",
+                map: "{main_url}/upload/2567/teams-map/team_ท่าวังผา-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอเวียงสา",
+            link: "{main_url}/schools/weangsa-puengpiknan",
+            map: "{main_url}/upload/2567/teams-map/team_เวียงสา-map.webp",
+            schools: [{
+                name: "รร.สาธุกิจประชาสรรค์ รัชมังคลาภิเษก",
+                link: "{main_url}/schools/weangsa-puengpiknan",
+                map: "{main_url}/upload/2567/teams-map/team_เวียงสา-map.webp"
+            }, {
+                name: "รร.สารทิศพิทยาคม",
+                link: "{main_url}/schools/weangsa-puengpiknan",
+                map: "{main_url}/upload/2567/teams-map/team_เวียงสา-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอบ่อเกลือ",
+            link: "{main_url}/schools/bokluea-sanstyle",
+            map: "{main_url}/upload/2567/teams-map/team_บ่อเกลือ-map.webp",
+            schools: [{
+                name: "รร.บ่อเกลือ",
+                link: "{main_url}/schools/bokluea-sanstyle",
+                map: "{main_url}/upload/2567/teams-map/team_บ่อเกลือ-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอภูเพียง",
+            link: "{main_url}/schools/phuphiang-freshhearb",
+            map: "{main_url}/upload/2567/teams-map/team_ภูเพียง-map.webp",
+            schools: [{
+                name: "รร.ภูเพียง",
+                link: "{main_url}/schools/phuphiang-freshhearb",
+                map: "{main_url}/upload/2567/teams-map/team_ภูเพียง-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอสองแคว",
+            link: "{main_url}/schools/songkwae-krafturai",
+            map: "{main_url}/upload/2567/teams-map/team_สองแคว-map.webp",
+            schools: [{
+                name: "รร.ไตรเขตประชาสามัคคี รัชมัคลาภิเษก",
+                link: "{main_url}/schools/songkwae-krafturai"
+            }]
+        }, {
+            name: "ทีมอำเภอนาน้อย",
+            link: "{main_url}/schools/nanoi-thamtham",
+            map: "{main_url}/upload/2567/teams-map/team_นาน้อย-map.webp",
+            schools: [{
+                name: "รร.นาน้อย",
+                link: "{main_url}/schools/nanoi-thamtham",
+                map: "{main_url}/upload/2567/teams-map/team_นาน้อย-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอนาหมื่น",
+            link: "{main_url}/schools/namuen-sillfeed",
+            map: "{main_url}/upload/2567/teams-map/team_นาหมื่น-map.webp",
+            schools: [{
+                name: "รร.นาหมื่นพิทยาคม",
+                link: "{main_url}/schools/namuen-sillfeed",
+                map: "{main_url}/upload/2567/teams-map/team_นาหมื่น-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอปัว",
+            link: "{main_url}/schools/pua-korkwan",
+            map: "{main_url}/upload/2567/teams-map/team_ปัว-map.webp",
+            schools: [{
+                name: "รร.มัธยมป่ากลาง",
+                link: "{main_url}/schools/pua-korkwan",
+                map: "{main_url}/upload/2567/teams-map/team_ปัว-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอแม่จริม",
+            link: "{main_url}/schools/maecharim-instan",
+            map: "{main_url}/upload/2567/teams-map/team_แม่จริม-map.webp",
+            schools: [{
+                name: "รร.แม่จริม",
+                link: "{main_url}/schools/maecharim-instan",
+                map: "{main_url}/upload/2567/teams-map/team_แม่จริม-map.webp"
+            }]
+        }],
+        '2566': [{
+            name: "ทีมอำเภอเชียงกลาง",
+            link: "#",
+            map: "{main_url}/upload/2566/teams-map/team-น้ำพริกสามช่า-มองเดอพี-map.webp",
+            schools: [{
+                name: "รร.เชียงกลางประชาพัฒนา",
+                link: "{main_url}/schools/chiangklang-prachapattana-school-numprik-samza",
+                map: "{main_url}/upload/2566/teams-map/team-น้ำพริกสามซ่า-map.webp"
+            }, {
+                name: "รร.พระธาตุพิทยาคม",
+                link: "{main_url}/schools/pratatpittayakhom-school-mongdee-phee",
+                map: "{main_url}/upload/2566/teams-map/team-มองเดอพี-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอท่าวังผา",
+            link: "{main_url}/schools/thawangphapittayakhom-school-kado",
+            map: "{main_url}/upload/2566/teams-map/team-kado-map.webp",
+            schools: [{
+                name: "รร.ท่าวังผาพิทยาคม",
+                link: "{main_url}/schools/thawangphapittayakhom-school-kado",
+                map: "{main_url}/upload/2566/teams-map/team-kado-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอปัว",
+            link: "{main_url}/schools/pao-school-mamuen-butter",
+            map: "{main_url}/upload/2566/teams-map/team-มะมื่นบัตเตอร์-map.webp",
+            schools: [{
+                name: "รร.ปัว",
+                link: "{main_url}/schools/pao-school-mamuen-butter",
+                map: "{main_url}/upload/2566/teams-map/team-มะมื่นบัตเตอร์-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอเมือง",
+            link: "{main_url}/schools/srisawatwittayakarn-school-lanala",
+            map: "{main_url}/upload/2566/teams-map/team-nalana-map.webp",
+            schools: [{
+                name: "รร.ศรีสวัสดิ์วิทยาคาร",
+                link: "{main_url}/schools/srisawatwittayakarn-school-lanala",
+                map: "{main_url}/upload/2566/teams-map/team-nalana-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอเวียงสา",
+            link: "#",
+            map: "{main_url}/upload/2566/teams-map/team-หลามรวย-TenBites-map.webp",
+            schools: [{
+                name: "รร.สา",
+                link: "{main_url}/schools/sa-school-laam-ruay",
+                map: "{main_url}/upload/2566/teams-map/team-หลามรวย-map.webp"
+            }, {
+                name: "รร.ราชประชานุเคราะห์ 56",
+                link: "{main_url}/schools/rajaprajanugroh56-school-cookie-ten-bites",
+                map: "{main_url}/upload/2566/teams-map/team-tenBites-map.webp"
+            }]
+        }, {
+            name: "ทีมอำเภอนาหมื่น",
+            link: "{main_url}/schools/munglee-school-lina",
+            map: "{main_url}/upload/2566/teams-map/team-lina-map.webp",
+            schools: [{
+                name: "รร.เมืองลีประชาสามัคคี",
+                link: "{main_url}/schools/munglee-school-lina",
+                map: "{main_url}/upload/2566/teams-map/team-lina-map.webp"
+            }]
+        }]
+    };
+
+
+    // ฟังก์ชันเริ่มต้นเมื่อโหลดหน้าเว็บ
+    document.addEventListener('DOMContentLoaded', function() {
+        loadYears(); // โหลดปีที่ใช้งานได้
+    });
+
+    // โหลดปีที่มีการใช้งาน
+    function loadYears() {
+        const yearDropdownList = document.getElementById('yearDropdownList');
+        const years = ['2567', '2566']; // ปีที่ใช้งานได้
+
+        years.forEach(year => {
+            const option = document.createElement('a');
+            option.href = "#";
+            option.className = "drp_province_list w-dropdown-link";
+            option.textContent = 'รุ่นปี ' + year;
+            option.onclick = () => {
+                chooseYear(year); // เรียกใช้ฟังก์ชันเลือกปี
+                closeDropdown('yearDropdownList'); // หุบ dropdown list
+            };
+            yearDropdownList.appendChild(option);
+        });
+    }
+
+
+
+
+    // เมื่อเลือกปี จะทำการโหลดข้อมูลอำเภอ และซ่อน Dropdown ปี
+    function chooseYear(year) {
+        currentYear = year;
+        document.getElementById("drp_camp_text_model").textContent = 'รุ่นปี ' + year; // แสดงปีที่เลือก
+        document.getElementById("pppy-map").src = year === '2566' ? 'upload/2566/map-nan2.webp' : 'upload/2567/map-nan3.webp';
+        updateDistricts(year); // โหลดข้อมูลอำเภอ
+    }
+
+    // ฟังก์ชันเพื่อปิด dropdown list
+    function closeDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        dropdown.classList.remove('w--open');
+    }
+    // อัพเดทข้อมูลอำเภอในปีที่เลือก
+    function updateDistricts(year) {
+        const districtList = document.getElementById("listProvince");
+        districtList.innerHTML = ''; // ล้างข้อมูลเก่า
+        const SchoolList = document.getElementById("listSchool");
+        SchoolList.innerHTML = ''; // ล้างข้อมูลเก่า
+        document.getElementById('districtDropdown').style.display = 'block'; // แสดง Dropdown ของอำเภอ
+        document.getElementById('schoolDropdown').style.display = 'block';
+        districtData[year].forEach(district => {
+            const option = document.createElement('a');
+            option.href = "#";
+            option.className = "drp_province_list w-dropdown-link";
+            option.textContent = district.name;
+            option.onmouseover = () => previewMap(district.map); // แสดงแผนที่ทีมอำเภอเมื่อเมาส์ผ่าน
+
+            option.onclick = () => {
+                chooseDistrict(district); // เลือกทีมอำเภอ
+                closeDropdown('listProvince'); // หุบ dropdown list
+            };
+
+            districtList.appendChild(option);
+        });
+    }
+
+    // ฟังก์ชันแสดงแผนที่เมื่อเมาส์ผ่าน
+    function previewMap(mapUrl) {
+        document.getElementById("pppy-map").src = mapUrl; // เปลี่ยนรูปแผนที่
+    }
+
+    // เมื่อเลือกอำเภอ จะเปลี่ยนแผนที่และโหลดข้อมูลโรงเรียน
+    function chooseDistrict(district) {
+        const mapImage = document.getElementById("pppy-map");
+        mapImage.src = district.map; // เปลี่ยนแผนที่ตามอำเภอที่เลือก
+        document.getElementById("drp_camp_text_province").textContent = district.name;
+
+        updateSchools(district.schools); // โหลดข้อมูลโรงเรียนในอำเภอ
+
+    }
+
+    // อัพเดทข้อมูลโรงเรียนในอำเภอที่เลือก
+    function updateSchools(schools) {
+
+        const schoolList = document.getElementById("listSchool");
+        schoolList.innerHTML = ''; // ล้างข้อมูลเก่า
+        schools.forEach(school => {
+            const option = document.createElement('a');
+            option.href = school.link;
+            option.className = "drp_province_list w-dropdown-link";
+            option.textContent = school.name;
+            option.onmouseover = () => previewMap(school.map); // เปลี่ยนแผนที่เมื่อเมาส์ผ่านโรงเรียน
+            option.onclick = () => selectSchool(school.link, school.name); // ไปยังหน้าโรงเรียนเมื่อคลิก
+            schoolList.appendChild(option);
+        });
+        document.getElementById("schoolDropdown").style.display = 'block'; // แสดง Dropdown ของโรงเรียน
+    }
+    ห
+    // ฟังก์ชันเลือกโรงเรียนแล้วไปยังหน้าเว็บโรงเรียน
+    function selectSchool(link, name) {
+        document.getElementById("drp_camp_text_school").textContent = name;
+        //window.location.href = link; // เปลี่ยนหน้าเว็บไปยังลิงก์โรงเรียน
+    }
+
+    // ฟังก์ชันเพื่อหุบ dropdown และซ่อน dropdown
+    function hideDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        dropdown.style.display = 'none'; // ซ่อน dropdown
+    }
+
+
+
+    
+</script>
+<style>
+
+/* Banner Slide */
+
+.banner_slider {
+    background-color: #e9e0e0;
+    margin-bottom: 100px;
+    
+}
+
+.banner_slider .slide_visual {
+    width: 100vw;
+    display: block;
+}
+
+/* Slide Structure */
+.banner_slider .w-slider,
+.banner_slider .w-slider-mask,
+.banner_slider .slide {
+    width: 100vw; /* Full width */
+}
+
+.banner_slider .w-slider {
+    position: relative;
+    padding-top: 46.875%; /* Maintain aspect ratio */
+}
+
+.banner_slider .w-slider-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* Navigator Dots */
+.slide-nav {
+    display: block;
+    justify-content: center; /* Center the dots */
+    align-items: center;
+    position: absolute;
+    margin-bottom: 100px; /* Adjust position */
+    
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 15px; /* Space between dots */
+}
+
+.w-slider-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.w-slider-dot.w-active {
+    background-color: #717171;
+}
+
+/* Desktop Screens */
+@media (min-width: 1080px) {
+    .banner_slider img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* iPad Screens */
+@media (min-width: 768px) and (max-width: 1079px) {
+    .banner_slider img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Mobile Screens */
+@media (max-width: 767px) {
+    .banner_slider img {
+        width: 100vw;
+        height: auto;
+    }
+}
+    
+    .w-dropdown {
+        position: static;
+    }
+    
+    .w-dropdown-list {
+        min-width: auto;
+    }
+    
+    .drp_campyep.w--open,
+    .drp_campschool.w--open,
+    .drp_camppartner.w--open {
+        margin-bottom: 0;
+        position: absolute;
+        min-width: 90%;
+        z-index: 999;
+    }
+    
+    .btn_province {
+        position: absolute;
+        bottom: 25%;
+        right: 5%;
+        color: #ffffff;
+        background-color: #837670;
+        padding: 20px 20px;
+        font-size: 30px;
+    }
+    
+    .pppy_map_section {
+        display: block;
+    }
+    
+    .pppy_slide2,
+    .pppy_slide3 {
+        text-align: center;
+    }
+    
+    .pppy_map {
+        margin: -50px 0px -100px 0px;
+        padding: 0px 0px 0px 0px;
+        display: block;
+        height: 100hv;
+    }
+    
+    @media screen and (min-width: 375px) {
+
+
+        .btn_province {
+            right: 10%;
+        }
+        .pppy_map {
+            margin: 10px 0px 00px 0px;
+            padding: 0px 0px 0px 0px;
+            display: block;
+            height: 100%;
+        }
+    }
+</style>

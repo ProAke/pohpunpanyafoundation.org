@@ -7,6 +7,8 @@ RewriteCond %{HTTP_HOST} ^playdigital\.co\.th$
 RewriteRule (.*) https://pppy.playdigital.co.th/$1 [R=301,L]
 
 
+
+
 #Redirect 301 /webstat /https://dev.pohpunpanyafoundation.org/404.php
 
 ErrorDocument 404 /404.php
@@ -24,22 +26,18 @@ ErrorDocument 400 /400.php
 		RewriteRule ^เกี่ยวกับเรา$ aboutus.php#pppyAboutus
 		RewriteRule ^vision-mssion$ aboutus.php#pppyVission
 		RewriteRule ^วิสัยทัศน์และพันธกิจ$ aboutus.php#pppyVission
-
 		RewriteRule ^aboutus#pppyAboutus$ aboutus.php#pppyAboutus
-
 		RewriteRule ^foundation-board$ management.php
 		RewriteRule ^คณะกรรมการมูลนิธิ$ management.php
-
 		RewriteRule ^pohpunpanya-camp$ pohpunpanya-boothcamp3.php
 		RewriteRule ^โครงการเพาะพันธุ์ปัญญาแคมป์$ pohpunpanya-boothcamp3.php
-
 		RewriteRule ^schools$ school.php
 		RewriteRule ^โรงเรียนที่เข้าร่วม$ school.php
-		RewriteRule ^schools/([_a-zA-Z0-9ก-ะาิีุูเะแำไใๆ่้๊๋ั็์ึื-๙-]+)$  school-detail.php?id=$1
-
-
+		#RewriteRule ^schools/([_a-zA-Z0-9ก-ะาิีุูเะแำไใๆ่้๊๋ั็์ึื-๙-]+)$  school-detail.php?id=$1
+		RewriteRule ^schools/([_a-zA-Z0-9ก-ะาิีุูเะแำไใๆ่้๊๋ั็์ึื-๙-]+)$  school-details.php?id=$1
 		RewriteRule ^partners$ partners.php
 		RewriteRule ^พันธมิตรโครงการ$ partners.php
+		RewriteRule ^partners/([_a-zA-Z0-9ก-ะาิีุูเะแำไใๆ่้๊๋ั็์ึื-๙-]+)$ partners.php?tg=$1
 
 		RewriteRule ^alumni-directory$ alumni-directory.php
 		RewriteRule ^พันธมิตรโครงการ$ alumni-directory.php
@@ -53,13 +51,15 @@ ErrorDocument 400 /400.php
 		RewriteRule ^บทความ$ blog.php
 		RewriteRule ^blog/([_a-zA-Z0-9ก-ะาิีุูเะแำไใๆ่้๊๋ั็์ึื-๙-]+)$  detail.php?id=$1
 
-		RewriteRule ^gallery$ gallery.php
-		RewriteRule ^แกลลอรี่$ gallery.php
-		RewriteRule ^แกลเลอรี$ gallery.php
+		RewriteRule ^photo-gallery$ photo-gallery.php
+		RewriteRule ^แกลลอรี่$ photo-gallery.php
+		RewriteRule ^แกลเลอรี$ photo-gallery.php
+		RewriteRule ^รูปภาพแกลลอรี$ photo-gallery.php
+
 
 		RewriteRule ^vdo-gallery$ vdo-gallery.php
-		RewriteRule ^วีดีโอแกลลอรี่$ vdo-gallery.php
-		RewriteRule ^วีดีโอแกลเลอรี่$ vdo-gallery.php		
+		RewriteRule ^วิดีโอแกลลอรี$ vdo-gallery.php
+		RewriteRule ^วีดีโอแกลเลอรี$ vdo-gallery.php		
 		RewriteRule ^วิดีโอแกลเลอรี$ vdo-gallery.php
 
 		RewriteRule ^contactus$ contactus.php

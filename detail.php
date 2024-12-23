@@ -41,17 +41,21 @@ if($_GET['id']=='pao'){
 	$tpl->assign("_ROOT.page_title", "&quot;เพาะพันธุ์ปัญญาแคมป์&quot;");
 	$tpl->assign("_ROOT.logo_brand_alt", $Brand);
 }elseif($_GET['id']=='newgentbiz'){
-	$tpl->assignInclude("body", "template/_tp_newgentbiz.html");
+	$tpl->assignInclude("body", "template/_tp_newgentbiz.html");  /* แก้ไขแล้ว */
 	$tpl->prepare();
 	$tpl->assign("_ROOT.page_title", "ถอดประสบการณ์ก้าวแรก &quot;นักธุรกิจรุ่นเยาว์&quot;");
 	$tpl->assign("_ROOT.logo_brand_alt", $Brand);
 
 }elseif($_GET['id']=='pohpunpanya67'){
-	$tpl->assignInclude("body", "template/_tp_pohpunpanya67.html");
+	$tpl->assignInclude("body", "template/_tp_pohpunpanya67.html"); /* แก้ไขแล้ว */
 	$tpl->prepare();
 	$tpl->assign("_ROOT.page_title", "เพาะพันธุ์ปัญญาแคมป์ รุ่นปี 2567 เพิ่มความเข้มข้นในทุกมิติ มุ่งสร้างการเรียนรู้การทำธุรกิจเสมือนจริง");
 	$tpl->assign("_ROOT.logo_brand_alt", $Brand);
-
+}elseif($_GET['id']=='missionyoungbiz'){
+	$tpl->assignInclude("body", "template/_tp_pohpunpanya-mission-young-biz.html"); /* แก้ไขแล้ว */
+	$tpl->prepare();
+	$tpl->assign("_ROOT.page_title", "เพาะพันธุ์ปัญญาแคมป์ รุ่นปี 2567 กับภารกิจปลุกปั้นเยาวชนนักธุรกิจสู่บ้านเกิด");
+	$tpl->assign("_ROOT.logo_brand_alt", $Brand);
 }else{
 
 	header('Location: /404');

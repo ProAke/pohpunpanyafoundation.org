@@ -2,7 +2,7 @@
    Website    :  Pohpunpanyafoundation.org
    Tech Code  :  Play Digital / Tech teams
    Create     :  01/10/2566
-   Update     :  22/02/2567 17:00 PM
+   Update     :  03/12/2567 08:00 PM
    */
    
     :root {
@@ -104,6 +104,21 @@
    .w-form-formrecaptcha {
        margin-bottom: 8px;
    }
+   /***********************************/
+   
+   .nm-plus {
+       position: relative;
+       z-index: 1;
+       margin-top: -350px;
+   }
+   
+   .nm-bgkey {
+       z-index: -1;
+       background-color: #e6e2e7;
+       height: 350px;
+       position: relative;
+   }
+   /***********************************/
    
    @media screen and (max-width: 991px) {
        .w-layout-blockcontainer {
@@ -775,6 +790,7 @@
        font-family: Sarabun, sans-serif;
        font-size: 25px;
        font-weight: 700;
+       line-height: 1.4;
    }
    
    .search {
@@ -881,7 +897,7 @@
        color: var(--black);
        margin: 96px auto 0;
        padding-top: 10px;
-       top: 75%;
+       top: 95%;
        bottom: 0%;
        left: 0%;
        right: 0%;
@@ -1225,6 +1241,7 @@
    }
    
    .team-block-info-2 {
+       padding-top: 10px;;
        text-align: center;
        flex-direction: column;
        justify-content: flex-end;
@@ -1237,6 +1254,7 @@
    .team-block-info-2.plus {
        padding-left: 10px;
        padding-right: 10px;
+       line-height: 15px;
    }
    
    .team-member-name-two-2 {
@@ -1287,7 +1305,6 @@
    }
    
    .partner-card {
-       
        border-radius: 20px;
        margin-bottom: 0;
        padding: 25px 0 0;
@@ -3538,8 +3555,10 @@
    .button-primary-6:active {
        background-color: #43464d;
    }
-     .schoolbrand {
-       display:none; /* ซ่อนไว้ก่อน */
+   
+   .schoolbrand {
+       display: none;
+       /* ซ่อนไว้ก่อน */
        background-color: #efecea;
        border-bottom: 1px solid #e4ebf3;
        padding: 20px 40px;
@@ -4435,8 +4454,8 @@
        max-width: 100%;
        margin-left: 0;
        margin-right: 0;
-       padding-left: 40px;
-       padding-right: 40px;
+       padding-left: 0px;
+       padding-right: 0px;
    }
    
    .sliderevents {
@@ -4455,6 +4474,7 @@
    .partnersubtext.plus {
        letter-spacing: -.5px;
        font-size: 18px;
+       margin-bottom: 20px;
    }
    
    .partnersliderwrapper {
@@ -4493,7 +4513,7 @@
        margin-right: auto;
        font-size: 30px;
        font-weight: 500;
-       line-height: 20px;
+       line-height: 35px;
    }
    
    .school-keytext {
@@ -4915,7 +4935,6 @@
        width: 30px;
        color: #e4caca;
        align-self: flex-start;
-       margin-right: 5px;
    }
    
    .footersocialblock2 {
@@ -5868,9 +5887,8 @@
    }
    
    .section-nm-detail {
-       margin-top: 380px;
        margin-bottom: 50px;
-       padding-top: 50px;
+       padding-top: 0px;
    }
    
    .detailblockcolor {
@@ -6044,8 +6062,10 @@
        margin-bottom: 10px;
        font-family: Sarabun, sans-serif;
        font-size: 18px;
-       font-weight: 500;
-       line-height: 25px;
+       font-weight: 400;
+       line-height: 28px;
+       /*text-align: justify;*/
+       text-indent: 0; margin-top: 2.17em;
    }
    
    .contents {
@@ -6076,9 +6096,11 @@
        font-family: Sarabun, sans-serif;
        font-size: 44px;
        font-weight: 600;
+       line-height: 50px;
    }
    
    .head2_contentblog {
+       margin-top: 20px;
        text-align: center;
        margin-top: 15px;
        font-family: Sarabun, sans-serif;
@@ -6136,7 +6158,7 @@
    }
    
    .div-newsphoto {
-       width: 940px;
+       width: 100%;
        margin-top: 50px;
        padding-left: 0;
        position: static;
@@ -6661,6 +6683,19 @@
            display: block;
        }
        /* NewsandMedia*/
+       .div-newsphoto {
+           width: 100%;
+           margin-top: 50px;
+           padding-left: 0;
+           position: static;
+           box-shadow: 0 2px 16px rgba(0, 0, 0, .2);
+       }
+       .container-nmi {
+           /*height: 550px;
+           position: static;*/
+           padding-left: 5%;
+           padding-right: 5%;
+       }
        .w-layout-hflex.flex-nm-end.newsdetail {
            width: 300px;
            font-family: sarabun;
@@ -7299,6 +7334,8 @@
            line-height: 1.5;
        }
        .partnersubtext.plus {
+           padding-left:15px;
+           padding-right:15px;
            font-size: 16px;
            line-height: 1.5;
        }
@@ -7652,7 +7689,7 @@
        }
        .partnerblock {
            margin-top: 20px;
-           margin-left: -25px;
+           margin-left: 0px;
        }
        .pagedetail_parner {
            background-color: var(--picker);
@@ -7897,6 +7934,8 @@
        }
        .content-nm-detail {
            margin-bottom: 50px;
+           padding-left: 50px;
+           padding-right: 50px;
        }
        .slidenum3 {
            font-size: 19px;
@@ -7958,8 +7997,8 @@
        }
        .tabs {
            margin-top: 40px;
-           padding-left: 40px;
-           padding-right: 40px;
+           padding-left: 0px;
+           padding-right: 0px;
            font-family: Sarabun, sans-serif;
            font-size: 18px;
            line-height: 28px;
@@ -8068,7 +8107,8 @@
            padding-right: 5px;
        }
        .nav-dropdown-list.shadow-three.w--open {
-           position: absolute;
+           position: relative;
+           z-index: 901;
        }
        .nav-button-wrapper {
            width: 100%;
@@ -8765,7 +8805,10 @@
            max-width: 100%;
        }
        .container-nmi {
-           height: 420px;
+           /* height: 420px;
+           position: static;*/
+           padding-left: 5px;
+           padding-right: 5px;
        }
        .columns-7 {
            margin-top: -64px;
@@ -9311,7 +9354,7 @@
            grid-row-gap: 125px;
            object-fit: fill;
            grid-template-rows: minmax(auto, 1fr) auto;
-           grid-template-columns: 1fr 1fr;
+           grid-template-columns: 1fr 1fr 1fr;
            grid-auto-flow: row;
            align-items: stretch;
            margin-bottom: 60px;
@@ -9819,7 +9862,7 @@
            padding-right: 20px;
        }
        .section-nm-detail {
-           margin-top: 100px;
+           margin-top: 0px;
        }
        .container-mananagement-white {
            padding-top: 50px;
@@ -9865,7 +9908,8 @@
            margin-top: 20px;
        }
        .container-nmi {
-           height: 480px;
+           padding-left: 0px;
+           padding-right: 0px;
        }
        .column-nm-left {
            display: none;
@@ -9874,6 +9918,7 @@
            margin-top: -60px;
            display: flex;
        }
+       #st-1 .st-btn {}
        .headdate {
            font-size: 18px;
        }
@@ -9889,6 +9934,8 @@
        }
        .content-nm-detail {
            margin-bottom: 50px;
+           padding-left: 5px;
+           padding-right: 5px;
        }
        .column-20,
        .column-21 {
@@ -9937,6 +9984,9 @@
    }
    
    @media screen and (max-width: 479px) {
+       .section-nm-detail {
+           margin-top: 0px;
+       }
        .w-container {
            max-width: 428px;
            margin-left: auto;
@@ -9951,6 +10001,8 @@
            margin-left: 2px;
            margin-right: 2px;
            padding: 8px 14px 8px 14px;
+           margin-top: 5px;
+           
        }
        .footer-copyright-center-2 {
            margin-top: 50px;
@@ -10437,11 +10489,11 @@
        }
        .schoolstudentgrid4 {
            grid-row-gap: 82px;
-           grid-template-rows: minmax(auto, 1fr) minmax(auto, 1fr);
            grid-template-columns: 1fr;
+           /* ค่าเริ่มต้น: 2 คอลัมน์สำหรับหน้าจอเล็ก */
            grid-auto-flow: row;
            margin-left: auto;
-           margin-right: auto;
+           margin-right: auto
        }
        .school-studentcard {
            width: 250px;
@@ -10685,6 +10737,10 @@
            margin-left: 0px;
            margin-right: 0px;
            text-align: center;
+       }
+       .partnercontainer .show {
+           padding-left: 0px;
+           padding-right: 0px;
        }
        .sliderevents {
            height: 180px;
@@ -10985,8 +11041,7 @@
            margin-bottom: 0;
        }
        .section-nm-detail {
-           margin-top: 40px;
-           padding-top: 0;
+           padding-top: 0px;
            padding-left: 10px;
            padding-right: 10px;
        }
@@ -11005,9 +11060,9 @@
            padding-left: 10px;
            padding-right: 10px;
            font-size: 16px;
+           text-align: justify;
        }
        .head1_blog {
-           padding-right: 0;
            font-size: 28px;
        }
        .head2_contentblog {
@@ -11097,12 +11152,12 @@
            width: 100px;
            border-top-left-radius: 10px;
            border-top-right-radius: 10px;
-           padding: 5px 10px;
+           padding: 5px 0px;
        }
        .generation.w--current {
            width: 100px;
            border-radius: 10px 10px 0 0;
-           padding: 5px 0;
+           padding: 5px 0px;
            display: block;
        }
        .container-28 {
@@ -11127,7 +11182,7 @@
            justify-content: center;
            padding-left: 10px;
            padding-right: 10px;
-           font-size: 16px;
+           font-size: 14px;
            font-weight: 500;
            display: flex;
        }
@@ -11418,6 +11473,151 @@
    @media screen and (max-width: 479px) {
        #w-node-_3caa8932-8dcd-d19a-7044-51bdf0a159ba-f0a159a8 {
            order: 0;
-           grid-area: span 1 / span 1 / span 1 / span 1;
+           grid-area: span 1 / span 1;
+       }
+   }
+   /* ตั้งค่า Grid สำหรับ Card */
+   
+   .schoolstudentgrid5 {
+       display: grid;
+       grid-gap: 20px;
+       grid-template-columns: repeat(2, 1fr);
+       /* ค่าเริ่มต้น: 2 คอลัมน์สำหรับมือถือ */
+       margin-left: auto;
+       margin-right: auto;
+       margin-top: 50px;
+       margin-bottom: 50px;
+   }
+   
+   .shDesktop {
+       display: block;
+   }
+   
+   .shMobile {
+       display: block;
+   }
+   /* Media Queries สำหรับ iPad (แสดงเป็น 3 คอลัมน์) */
+   
+   @media screen and (min-width: 768px) and (max-width: 1079px) {
+       .schoolstudentgrid5 {
+           grid-template-columns: repeat(3, 1fr);
+           /* 3 คอลัมน์สำหรับ iPad */
+       }
+       .shDesktop {
+           display: block;
+       }
+       .shMobile {
+           display: none;
+       }
+   }
+   /* Media Queries สำหรับหน้าจอใหญ่ (แสดงเป็น 5 คอลัมน์) */
+   
+   @media screen and (min-width: 1080px) {
+       .schoolstudentgrid5 {
+           grid-template-columns: repeat(5, 1fr);
+           /* 5 คอลัมน์สำหรับหน้าจอใหญ่ */
+       }
+       .shDesktop {
+           display: block;
+       }
+       .shMobile {
+           display: none;
+       }
+   }
+   /* ตั้งค่า Flexbox เพื่อให้ grid อยู่ตรงกลาง */
+   
+   .schoolteams5 {
+       display: flex;
+       justify-content: center;
+       /* จัดให้อยู่ตรงกลางแนวนอน */
+       /*align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+       /*min-height: 100vh; /* ถ้าต้องการให้เนื้อหาอยู่กลางหน้าจอแนวตั้ง */
+       padding: 20px;
+   }
+   
+   .school-container5 {
+       max-width: 1200px;
+       /* กำหนดความกว้างสูงสุด */
+       width: 100%;
+       /* ทำให้ container กว้างเต็มที่ */
+       margin-left: auto;
+       margin-right: auto;
+   }
+   /* ปรับแต่ง block ของนักเรียน */
+   
+   .schoolstudentblock5 {
+       /*background-color: #f9f9f9;*/
+       /* สีพื้นหลังสำหรับ card */
+       padding: 0px;
+       border-radius: 10px;
+       /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+       /* เพิ่มเงา */
+       text-align: center;
+       /* จัดให้อยู่ตรงกลาง */
+   }
+   /* ปรับขนาดรูปภาพให้ไม่ crop */
+   
+   .school-student5 {
+       width: 100%;
+       /* ทำให้รูปภาพกว้างเต็ม card */
+       max-width: 292px;
+       /* คงความกว้างตามสัดส่วนจริง */
+       height: auto;
+       /* ให้ความสูงปรับตามอัตราส่วน */
+       border-radius: 10px;
+       /* เพิ่มการโค้งมนที่มุม */
+       object-fit: contain;
+       /* ป้องกันการ crop รูปภาพ */
+   }
+   
+   .schoolstudent-name5 {
+       font-size: 1.2rem;
+       font-weight: bold;
+       margin-top: 10px;
+       color: #333;
+   }
+   
+   .schoolname-subtext-student5 {
+       font-size: 1.0rem;
+       color: #555;
+       margin-top: 5px;
+   }
+   
+   @media screen and (min-width: 1080px) {
+       .school-student5 {
+           max-width: 292px;
+           height: auto;
+       }
+       .schoolstudent-name5 {
+           font-size: 1.2rem;
+       }
+       .schoolname-subtext-student5 {
+           font-size: 1.0rem;
+       }
+   }
+   
+   @media screen and (min-width: 768px) and (max-width: 1079px) {
+       .school-student5 {
+           max-width: 292px;
+           height: auto;
+       }
+       .schoolstudent-name5 {
+           font-size: 1.2rem;
+       }
+       .schoolname-subtext-student5 {
+           font-size: 0.9rem;
+       }
+   }
+   
+   @media screen and (max-width: 767px) {
+       .school-student5 {
+           max-width: 292px;
+           height: auto;
+       }
+       .schoolstudent-name5 {
+           font-size: 0.85rem;
+       }
+       .schoolname-subtext-student5 {
+           font-size: 0.75rem;
        }
    }

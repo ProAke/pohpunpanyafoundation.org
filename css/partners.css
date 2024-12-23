@@ -1,0 +1,347 @@
+
+.partnersubhead {
+    font-size: 4vw; /* ขนาดตัวอักษรปรับตามหน้าจอ */
+    line-height: 1; /* ปรับระยะห่างระหว่างบรรทัดให้ชิดขึ้น แต่ยังไม่ติดกัน */
+}
+
+.partnersubkey {
+    font-size: 5vw; /* ขนาดตัวอักษรปรับตามหน้าจอ */
+    font-weight: bold; /* ตัวอักษรหนา */
+    line-height: 1; /* ปรับระยะห่างระหว่างบรรทัดให้ชิดขึ้น */
+}
+
+/* สำหรับหน้าจอที่ใหญ่กว่า 768px */
+@media (min-width: 768px) {
+    .partnersubhead {
+        font-size: 2rem; /* ขนาดฟอนต์ที่เหมาะสมสำหรับหน้าจอใหญ่ */
+        line-height: 1; /* ปรับระยะห่างให้เหมาะสม */
+    }
+
+    .partnersubkey {
+        font-size: 2.5rem;
+        line-height: 1; /* ปรับระยะห่างให้ชิดขึ้น แต่ยังไม่ติดกัน */
+    }
+}
+
+
+
+
+/* สำหรับหน้าจอที่ใหญ่กว่า 768px */
+@media (min-width: 768px) {
+    .partnername {
+        font-size: 1.0rem; /* ขนาดฟอนต์ที่เหมาะสมสำหรับหน้าจอใหญ่ */
+        line-height: 1.2; /* ระยะห่างระหว่างบรรทัด */
+    }
+
+    .partnersubtext {
+        font-size: 0.5rem; /* ขนาดฟอนต์ที่เหมาะสมสำหรับหน้าจอใหญ่ */
+        line-height: 1.2; /* ระยะห่างระหว่างบรรทัด */
+    }
+}
+
+/* สำหรับหน้าจอที่ใหญ่กว่า 1024px */
+@media (min-width: 1024px) {
+    .partnername {
+        font-size: 1.5rem; /* ขนาดฟอนต์ที่เหมาะสมสำหรับหน้าจอใหญ่ */
+        line-height: 1.2;
+    }
+
+    .partnersubtext {
+        font-size: 2rem; /* ขนาดฟอนต์ที่เหมาะสมสำหรับหน้าจอใหญ่ */
+        line-height: 1.2;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* สำหรับหน้าจอใหญ่ */
+.container-grid {
+    max-width: 1920px; /* ขนาดสูงสุดสำหรับหน้าจอใหญ่ */
+    padding: 40px 40px;   /* ระยะห่างจากขอบหน้าจอ */
+    margin: 0 auto;    /* จัดกึ่งกลางหน้าจอ */
+}
+
+/* สำหรับหน้าจอขนาดกลาง (Tablet) */
+@media (max-width: 1024px) {
+    .container-grid {
+        max-width: 1024px; /* ลดขนาดสูงสุด */
+        padding: 30px 30px;   /* ลดระยะห่างซ้ายขวา */
+    }
+}
+
+/* สำหรับหน้าจอขนาดเล็ก (มือถือขนาดใหญ่) */
+@media (max-width: 768px) {
+    .container-grid {
+        max-width: 768px; /* ลดขนาดสูงสุดให้พอดีจอมือถือขนาดใหญ่ */
+        padding: 20px 20px;  /* ลดระยะห่างซ้ายขวา */
+    }
+}
+
+/* สำหรับหน้าจอขนาดเล็กมาก (มือถือขนาดเล็ก) */
+@media (max-width: 468px) {
+    .container-grid {
+        max-width: 100%; /* ใช้ขนาดเต็มหน้าจอสำหรับมือถือขนาดเล็ก */
+        padding: 15px 15px;  /* ลดระยะห่างซ้ายขวาอีก */
+    }
+}
+
+
+.speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* ค่าเริ่มต้น แถวละ 2 ท่าน */
+    gap: 16px; /* ระยะห่างระหว่างภาพ */
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* กรณีหน้าจอมากกว่า 468px และน้อยกว่า 768px (แถวละ 3 ท่าน) */
+@media (min-width: 468px) and (max-width: 767px) {
+    .speaker-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* จัดกึ่งกลางภาพท่านที่เป็นเศษโดยไม่ขยายภาพ */
+    .speaker-grid > :nth-child(3n + 1):last-child {
+        grid-column: span 3; /* ใช้ช่องว่างทั้งหมด */
+        justify-self: center; /* จัดกลาง */
+        width: calc(100% / 3 - 10px); /* บังคับขนาดภาพให้เท่ากับภาพในแถว 3 */
+    }
+}
+
+/* กรณีหน้าจอใหญ่กว่า 768px (แถวละ 4 ท่าน) */
+@media (min-width: 767px) {
+    .speaker-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* จัดกึ่งกลางภาพท่านที่เป็นเศษโดยไม่ขยายภาพ */
+    .speaker-grid > :nth-child(4n + 1):last-child {
+        grid-column: span 4; /* ใช้ช่องว่างทั้งหมด */
+        justify-self: center; /* จัดกลาง */
+        width: calc(100% / 4 - 10px); /* บังคับขนาดภาพให้เท่ากับภาพในแถว 4 */
+    }
+}
+
+/* กรณีหน้าจอใหญ่กว่า 768px (แถวละ 4 ท่าน) */
+@media (min-width: 768px) {
+    .speaker-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* จัดกึ่งกลางวิทยากรที่เป็นเศษในแถวสุดท้าย */
+    .speaker-grid > :nth-child(4n + 1):last-child {
+        grid-column: span 4;
+        justify-self: center;
+    }
+}
+
+
+
+
+
+
+    .pro {
+        font-size: 35px;
+        font-weight: bold;
+        line-height: 20px;
+    }
+    
+    .inpartners_h2 {
+        margin-top: 50px;
+        color: #96b759;
+        text-shadow: #000000;
+    }
+    
+    .partnersTextinLine {
+        display: inline;
+        color: #00953b;
+    }
+    
+    .inpartners_h2_subtext {
+        margin-top: -25px;
+        color: #837670;
+        font-size: 28pt;
+    }
+    
+    .white_bg {
+        background-color: white;
+    }
+    
+    .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* จัดกึ่งกลางในแนวนอน */
+        gap: 2px;
+        /* ปรับ gap ให้เป็น 2px */
+        margin-bottom: 50px;
+        align-content: center;
+        padding: 10px;
+        /* เพิ่ม padding เพื่อให้มีพื้นที่ภายใน */
+        border-radius: 20px;
+        /* ทำให้กรอบนอกเป็นมุมมน */
+        background-color: #ffffff;
+        /* สีพื้นกรอบนอก */
+    }
+    
+    .button-link {
+        display: inline-block;
+        padding: 6px 12px;
+        background-color: #ededed;
+        color: #666666;
+        text-decoration: none;
+        border-radius: 20px;
+        font-size: 15px;
+        text-align: center;
+        border: 1px solid #ededed;
+    }
+    
+    .button-link:hover {
+        background-color: #cac9c9;
+    }
+    
+    .button-link:active {
+        background-color: #cac9c9;
+        color: #000000;
+    }
+    /* 
+    Start Grid-Container 
+    for Partner alumni gallery and others grid: 
+    */
+    
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        /* Default for desktop */
+        gap: 30px;
+        /* Gap for both desktop and iPad */
+        padding: 20px;
+    }
+    
+    .grid-item {
+        text-align: center;
+    }
+    
+    .grid-item img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .grid-item p {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    
+    .grid-container-logo {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        gap: 30px;
+        padding: 20px;
+    }
+    
+    .grid-item-logo {
+        text-align: center;
+    }
+    
+    .grid-item-logo img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .grid-item-logo p {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    
+    @media (max-width: 1080px) {
+        .pro {
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 20px;
+        }
+        .grid-container {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+    }
+    /* Responsive for Mobile  Horizontal */
+    
+    @media (max-width: 768px) {
+        .pro {
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 20px;
+        }
+        .grid-container {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .grid-item p {
+            font-size: 16px;
+            display: block;
+        }
+        .grid-container-logo {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .grid-item-logo p {
+            font-size: 16px;
+            display: block;
+        }
+    }
+    
+    @media (max-width: 479px) {
+        .pro {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 28px;
+        }
+        .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .grid-item p {
+            font-size: 14px;
+            display: block;
+        }
+        .grid-container-logo {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .grid-item-logo p {
+            font-size: 14px;
+            display: block;
+        }
+    }
+    /*  END Grid-Container */
+    
+    .flex-container {
+        margin: 50px 0px 80px 0px;
+        display: flex;
+        justify-content: center;
+        /* จัดกึ่งกลาง */
+        align-items: center;
+        /* จัดกึ่งกลางแนวตั้ง (ถ้าจำเป็น) */
+        flex-wrap: wrap;
+        /* ถ้าบล็อกเยอะเกินไปให้ย้ายลงบรรทัดใหม่ */
+        gap: 10px;
+        /* ระยะห่างระหว่างบล็อก */
+    }
+    
+    .flex-item {
+        width: 100px;
+        flex: 0 0 auto;
+        /* ทำให้บล็อกมีขนาดคงที่ */
+        text-align: center;
+        /* จัดกึ่งกลางเนื้อหาภายในบล็อก */
+    }

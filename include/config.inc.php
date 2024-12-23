@@ -17,7 +17,7 @@ $copyYear   = "2023-2024";
 
 
 $db_config = array(
-    "host" => "localhost",
+    "host" => "pppy.playdigital.co.th",
     "user" => "pohpun_web",
     "pass" => "x@8Vk99c4",
     "dbname" => "pohpun_web",
@@ -30,9 +30,14 @@ $db_config = array(
 date_default_timezone_set("Asia/Bangkok");
 $strDateTime  = date("Y-m-d h:i:s");
 $tnow          = date("h:i:s");
-$url_main = 'https://pppy.playdigital.co.th';
+$url_main = 'http://127.0.0.1:8888';
 //$url_main = 'https://dev.pohpunpanyafoundation.org';
+$img_path = '/upload/';
 
+if (isset($_COOKIE['user_info'])) {
+    $user_info = $_COOKIE['user_info'];
+    list($screen_width, $screen_height, $user_agent) = explode('|', $user_info);
+}
 
 $iPod = stripos($_SERVER['HTTP_USER_AGENT'], "iPod");
 $iPhone = stripos($_SERVER['HTTP_USER_AGENT'], "iPhone");
@@ -69,6 +74,7 @@ $tableAdminMenu 					= 	"tb_admin_menu";
 
 $tableNewsCategory					=	"tb_news_category";
 $tableNews							=	"tb_news";
+$tableNewsDetail					=	"tb_news_detail";
 $tablePage 							= 	"tb_page";
 $tablePageDetail 					= 	"tb_page_detail";
 $tableSchool 						= 	"tb_school";

@@ -20,11 +20,18 @@ FRONTLANGUAGE($_SESSION['lag']);
 ##########
 
 if($_SESSION['lagText']=="EN"){
+
+	$tpl->assign("_ROOT.page_title","News and Media");
+	$tpl->assign("_ROOT.NewsAndMedia", "News and Media");
+
 	$arrayNewsCategory = array('<a href="'.$url_main.'/news" class="nag-button w-button">News</a>',
 	'<a href="'.$url_main.'/blog" class="nag-button w-button">Blog</a>',
-	'<a href="'.$url_main.'/gallery" class="nag-button w-button">Gallery</a>',	
+	'<a href="'.$url_main.'/photo-gallery" class="nag-button w-button">Photo Gallery</a>',	
 	'<a href="'.$url_main.'/vdo-gallery" class="nag-button w-button">VDO Gallery</a>');
 }else{
+
+	$tpl->assign("_ROOT.page_title","ข่าวสารและมีเดีย");
+	$tpl->assign("_ROOT.NewsAndMedia", "ข่าวสารและมีเดีย");
 	$arrayNewsCategory = array('<a href="'.$url_main.'/ข่าวสารกิจกรรม" class="nag-button w-button">ข่าวสาร</a>',
 	'<a href="'.$url_main.'/บทความ" class="nag-button w-button">บทความ</a>',
 	'<a href="'.$url_main.'/แกลเลอรี" class="nag-button w-button">แกลเลอรี</a>',

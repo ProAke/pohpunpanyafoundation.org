@@ -1,0 +1,49 @@
+<section class="keypageall">
+    <div class="keypage_block">
+        <h1 class="keypagetext">{page_title}</h1>
+    </div>
+</section>
+
+
+
+<!--
+w-layout-blockcontainer
+ container-nmi 
+   w-container
+   [ div-newsphoto
+     > news-main-photo
+   ]
+
+
+
+-->
+
+
+<section class="section-nm-keyimg">
+    <div class="w-layout-blockcontainer container-nmi w-container">
+        <div class="div-newsphoto">
+            <img src="../images/article_thumb2.png" loading="lazy" sizes="(max-width: 767px) 100vw,
+             (max-width: 991px) 728px,
+              940px" srcset="../images/article_thumb2-p-500.png 500w,
+               ../images/article_thumb2-p-800.png 800w,
+                ../images/article_thumb2.png 1080w" alt="{page_title}" class="news-main-photo">
+
+            <div class="w-layout-vflex flexbox-tab">
+                <div class="w-layout-hflex flex-nm-left">
+                    <h1 class="headgroup">{groupName}</h1>
+                </div>
+                <div class="w-layout-hflex flex-nm-block">
+                    <h1 class="headdate">{postDate}</h1>
+                </div>
+                <div class="w-layout-hflex flex-nm-end">
+                    <!-- ShareThis BEGIN -->
+                    <span>แชร์ : </span>
+                    <div class="sharethis-inline-share-buttons"></div>
+                    <!-- ShareThis END -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-nm-detail"></section>

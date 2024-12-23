@@ -1663,3 +1663,28 @@ while($line = mysql_fetch_array($result)){
 	}
 
 
+
+	function wrapText($text, $maxLength) {
+		$wrappedText = ''; // ตัวแปรเก็บข้อความที่ถูกจัดเรียงใหม่
+		$currentLine = ''; // ตัวแปรสำหรับบรรทัดปัจจุบัน
+	
+		// แยกข้อความเป็นคำตามช่องว่าง
+		$words = explode(' ', $text);
+	
+		foreach ($words as $word) {
+			// ตรวจสอบว่าบรรทัดปัจจุบันจะยาวเกิน maxLength ถ้าเพิ่มคำนี้หรือไม่
+			if (strlen($currentLine . ' ' . $word) > $maxLength) {
+				// ถ้าเกิน ให้เพิ่มบรรทัดใหม่ลงใน $wrappedText
+				$wrappedText .= trim($currentLine) . "<br>"; 
+				$currentLine = $word; // เริ่มบรรทัดใหม่ด้วยคำนี้
+			} else {
+				// ถ้าไม่เกิน ให้ต่อคำลงในบรรทัดปัจจุบัน
+				$currentLine .= ' ' . $word;
+			}
+		}
+	
+		// เพิ่มบรรทัดสุดท้ายลงในผลลัพธ์
+		$wrappedText .= trim($currentLine);
+	
+		return $wrappedText;
+	}

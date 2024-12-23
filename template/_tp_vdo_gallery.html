@@ -1,12 +1,12 @@
 <section class="keypageall">
     <div class="keypage_block">
-        <h1 class="keypagetext">วิดีโอแกลลอรี</h1>
+        <h1 class="keypagetext">{page_title}</h1>
     </div>
 </section>
 <div class="w-layout">
     <div class="container-newsandmedia">
         <div style="height:25px;"></div>
-        <a href="{url_main}/news-media" class="nag-buttontop w-button">ข่าวสารและมีเดีย</a>
+        <a href="{url_main}/news-media" class="nag-buttontop w-button">{NewsAndMedia}</a>
         <div class="w-layout-blockcontainer container-6 w-container">
             {arrayNewsCategory}
         </div>
@@ -15,6 +15,20 @@
 
 
 
+
+<!-- START BLOCK : VDOGallery -->
+<a href="#" class="partnerlightbox w-inline-block w-lightbox">
+    <img src="{vdo1080}" loading="lazy" sizes="(max-width: 767px) 94vw, 500px" srcset="{vdo940} 500w, 
+    {vdo800} 800w, 
+    {vdo1080} 1064w" alt="" class="#">
+    {Lightbox}
+</a>
+<!-- END BLOCK : VDOGallery -->
+
+
+
+
+<div style="display: none;">
             <a href="#" class="partnerlightbox w-inline-block w-lightbox">
                 <img src="upload/slideVdo/20231025032151-418221299_940.png" loading="lazy" sizes="(max-width: 767px) 94vw, 500px" srcset="upload/slideVdo/20231025032151-418221299_940.png 500w, 
                 upload/slideVdo/20231025032151-418221299_940.png 800w, 
@@ -35,12 +49,32 @@
                 </script>
             </a>
 
-
+<a href="#" class="partnerlightbox w-inline-block w-lightbox">
+    <img src="{img940}" loading="lazy" 
+    sizes="(max-width: 767px) 94vw, 500px" 
+    srcset="{img940} 500w, 
+    {img800} 800w, 
+    {img1080} 1064w" alt="{gallery}" class="#">
+    <script type="application/json" class="w-json">
+        {
+            "items": [{
+                "url": "https://www.youtube.com/watch?v=xJlSbLTSp4U",
+                "originalUrl": "https://www.youtube.com/watch?v=xJlSbLTSp4U",
+                "width": 940,
+                "height": 528,
+                "thumbnailUrl": "https://i.ytimg.com/vi/xJlSbLTSp4U/hqdefault.jpg",
+                "html": "<iframe width=\"940\" height=\"528\" src=\"https://www.youtube.com/embed/xJlSbLTSp4U?si=-hdUckbuLkq95J5d&rel=0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+                "type": "video"
+            }],
+            "group": ""
+        }
+    </script>
+</a>
 
             <a href="#" class="partnerlightbox w-inline-block w-lightbox">
-                <img src="upload/slideVdo/20231025032218-1212520241_940.png" loading="lazy" sizes="(max-width: 767px) 94vw, 500px" srcset="upload/slideVdo/20231025032218-1212520241_940.png 500w, 
-                upload/slideVdo/20231025032218-1212520241_940.png 800w, 
-                upload/slideVdo/20231025032218-1212520241_940.png 1064w" alt="" class="#">
+                <img src="upload/slideVdo/ep1.webp" loading="lazy" sizes="(max-width: 767px) 94vw, 500px" srcset="upload/slideVdo/ep1.webp 500w, 
+                upload/slideVdo/ep1.webp 800w, 
+                upload/slideVdo/ep1.webp 1064w" alt="" class="#">
                 <script type="application/json" class="w-json">
                     {
                         "items": [{
@@ -96,7 +130,7 @@
                     }
                 </script>
             </a>
-
+</div>
 
         </div>
     </div>

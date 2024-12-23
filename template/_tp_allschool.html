@@ -5,291 +5,197 @@
 </section>
 <div data-current="Tab 3" data-easing="ease" data-duration-in="300" data-duration-out="100" class="tabs w-tabs">
     <div class="tabsmart w-tab-menu">
-
-        <a data-w-tab="Tab 3" class="generation w-inline-block w-tab-link w--current">
-                <div class="generationtext">รุ่นปี 2567</div>
-            </a>
-        <a data-w-tab="Tab 1" class="generation w-inline-block w-tab-link w--current">
+        <a id="tab-all" data-w-tab="Tab 1" class="generation w-inline-block w-tab-link{TabAll}">
+            <div class="generationtext">ทั้งหมด</div>
+        </a>
+        <a id="tab-2567" data-w-tab="Tab 3" data-tab="2567" class="generation w-inline-block w-tab-link{Tab2567}">
+            <div class="generationtext">รุ่นปี 2567</div>
+        </a>
+        <a id="tab-2566" data-w-tab="Tab 2" data-tab="2566" class="generation w-inline-block w-tab-link{Tab2566}">
             <div class="generationtext">รุ่นปี 2566</div>
         </a>
 
-        <a data-w-tab="Tab 2" class="generation w-inline-block w-tab-link">
-            <div class="generationtext">ทั้งหมด</div>
-        </a>
+
     </div>
     <div class="w-tab-content">
 
-        <div data-w-tab="Tab 3" class="tabpane w-tab-pane w--tab-active">
+        <div data-w-tab="Tab 3" class="tabpane w-tab-pane">
+            <section class="pagedeail">
+
+                <div class="school-container">
+                    <h2 class="school-headertext">โรงเรียนที่เข้าร่วมโครงการเพาะพันธุ์ปัญญาแคมป์</h2>
+                    <p class="school-keytext">รุ่นปี 2567</p>
+
+
+
+
+                    <br>
+
+
+
+                    <div class="grid-container">
+
+                        {arraySchool67}
+
+                    </div>
+
+
+
+                </div>
+            </section>
+        </div>
+
+        <div data-w-tab="Tab 2" class="tabpane w-tab-pane">
+            <section class="pagedeail">
+                <div class="school-container">
+                    <h2 class="school-headertext">โรงเรียนที่เข้าร่วมโครงการเพาะพันธุ์ปัญญาแคมป์</h2>
+                    <p class="school-keytext">รุ่นปี 2566</p>
+                    <br>
+                    <div class="grid-container">
+                        {arraySchool66}
+                    </div>
+
+            </section>
+            </div>
+            <div data-w-tab="Tab 1" class="tabpane w-tab-pane w--tab-active">
                 <section class="pagedeail">
-                    
+
                     <div class="school-container">
+
                         <h2 class="school-headertext">โรงเรียนที่เข้าร่วมโครงการเพาะพันธุ์ปัญญาแคมป์</h2>
-                        <p class="school-keytext">รุ่นปี 2567</p>
+                        <p class="school-keytext">ทั้งหมด</p>
+                        <div class="grid-container">
+
+                            {arraySchoolAll}
+
+                        </div>
 
 
 
 
-<br>
 
 
 
-  <div class="grid-container">
-        <!-- ชุดที่ 1 -->
-        <div class="grid-item">
-            <a href="{url_main}/schools/mueang-nplant">
-                <img src="../images/2567/students/01-mueang/01-n-plant.png" alt="N-PLANT">
-            </a>
-            <p>ทีมอำเภอเมือง</p>
-        </div>
-
-        <!-- ชุดที่ 2 -->
-        <div class="grid-item">
-            <a href="{url_main}/schools/thawungpa-spakaitee">
-                <img src="../images/2567/students/02-tha-wang-pha/02-spakitee.png" alt="สปาไกตี้">
-            </a>
-            <p>ทีมอำเภอท่าวังผา</p>
-        </div>
-
-        <!-- ชุดที่ 3 -->
-        <div class="grid-item">
-            <a href="{url_main}/schools/weangsa-puengpiknan">
-                <img src="../images/2567/students/03-wiang-sa/03-pueangpiknan.png" alt="ผึ้งปิ๊กน่าน">
-            </a>
-            <p>ทีมอำเภอเวียงสา</p>
-        </div>
-
-        <!-- ชุดที่ 4 -->
-        <div class="grid-item">
-            <a href="{url_main}/schools/bokluea-sanstyle">
-                <img src="../images/2567/students/04-bo-kluea/04-sanstyle.png" alt="สานสไตล์">
-            </a>
-            <p>ทีมอำเภอบ่อเกลือ</p>
-        </div>
-
-        <!-- ชุดที่ 5 -->
-        <div class="grid-item">
-            <a href="{url_main}/schools/phuphiang-freshhearb">
-                <img src="../images/2567/students/05-phu-phiang/05-fresh-herb.png" alt="Fresh Herb น่านเจ้า">
-            </a>
-            <p>ทีมอำเภอภูเพียง</p>
-        </div>
-
-        <!-- ชุดที่ 6 -->
-        <div class="grid-item">
-            <a href="{url_main}/schools/songkwae-krafturai">
-                <img src="../images/2567/students/06-song-kwae/06-krafaurai.png" alt="คราฟท์อุไรซ์">
-            </a>
-            <p>ทีมอำเภอสองแคว</p>
-        </div>
-
-        <!-- ชุดที่ 7 -->
-        <div class="grid-item">
-            <a href="{url_main}/schools/nanoi-thamtham">
-                <img src="../images/2567/students/07-nanoi/07-tamtam.png" alt="แทมแทม">
-            </a>
-            <p>ทีมอำเภอนาน้อย</p>
-        </div>
-
-        <!-- ชุดที่ 8 -->
-        <div class="grid-item">
-            <a href="{url_main}/schools/namuen-sillfeed">
-                <img src="../images/2567/students/08-namuen/08-sillfeed.png" alt="SILL FEED">
-            </a>
-            <p>ทีมอำเภอนาหมื่น</p>
-        </div>
-
-        <!-- ชุดที่ 9 -->
-        <div class="grid-item">
-            <a href="{url_main}/schools/pua-korkwan">
-                <img src="../images/2567/students/09-pua/09-korkwean.png" alt="ข.แขว่น">
-            </a>
-            <p>ทีมอำเภอปัว</p>
-        </div>
-
-        <!-- ชุดที่ 10 -->
-        <div class="grid-item">
-            <a href="{url_main}/schools/maecharim-instan">
-                <img src="../images/2567/students/10-maecharim/10-InsTAN.png" alt="InsTAN">
-            </a>
-            <p>ทีมอำเภอแม่จริม</p>
-        </div>
-    </div>
 
 
 
                     </div>
                 </section>
-        </div>
-
-        <div data-w-tab="Tab 1" class="tabpane w-tab-pane">
-            <section class="pagedeail">
-
-                <div class="school-container">
-                    <h2 class="school-headertext">โรงเรียนที่เข้าร่วมโครงการเพาะพันธุ์ปัญญาแคมป์</h2>
-                    <p class="school-keytext">รุ่นปี 2566</p>
-                    <a href="{url_main}/schools/chiangklang-prachapattana-school-numprik-samza" class="schoolbannerslink w-inline-block"><img src="images/School_banner_1.png" loading="lazy" sizes="(max-width: 479px) 98vw, (max-width: 767px) 95vw, (max-width: 991px) 728px, (max-width: 1439px) 100vw, 1140px" srcset="images/School_banner_1-p-500.png 500w, images/School_banner_1-p-800.png 800w, images/School_banner_1-p-1080.png 1080w, images/School_banner_1-p-1600.png 1600w, images/School_banner_1.png 1920w"
-                            alt=""></a>
-                    <a href="{url_main}/schools/pratatpittayakhom-school-mongdee-phee" class="schoolbannerslink w-inline-block"><img src="images/School_banner_2.png" loading="lazy" sizes="(max-width: 479px) 98vw, (max-width: 767px) 95vw, (max-width: 991px) 728px, (max-width: 1439px) 100vw, 1140px" srcset="images/School_banner_2-p-500.png 500w, images/School_banner_2-p-800.png 800w, images/School_banner_2-p-1080.png 1080w, images/School_banner_2-p-1600.png 1600w, images/School_banner_2.png 1920w"
-                            alt=""></a>
-                    <a href="{url_main}/schools/thawangphapittayakhom-school-kado" class="schoolbannerslink w-inline-block"><img src="images/School_banner_3.png" loading="lazy" sizes="(max-width: 479px) 98vw, (max-width: 767px) 95vw, (max-width: 991px) 728px, (max-width: 1439px) 100vw, 1140px" srcset="images/School_banner_3-p-500.png 500w, images/School_banner_3-p-800.png 800w, images/School_banner_3-p-1080.png 1080w, images/School_banner_3-p-1600.png 1600w, images/School_banner_3.png 1920w"
-                            alt=""></a>
-                    <a href="{url_main}/schools/pao-school-mamuen-butter" class="schoolbannerslink w-inline-block"><img src="images/School_banner_5.png" loading="lazy" sizes="(max-width: 479px) 98vw, (max-width: 767px) 95vw, (max-width: 991px) 728px, (max-width: 1439px) 100vw, 1140px" srcset="images/School_banner_5-p-500.png 500w, images/School_banner_5-p-800.png 800w, images/School_banner_5-p-1080.png 1080w, images/School_banner_5-p-1600.png 1600w, images/School_banner_5.png 1920w"
-                            alt=""></a>
-                    <a href="{url_main}/schools/sa-school-laam-ruay" class="schoolbannerslink w-inline-block"><img src="images/School_banner_6.png" loading="lazy" sizes="(max-width: 479px) 98vw, (max-width: 767px) 95vw, (max-width: 991px) 728px, (max-width: 1439px) 100vw, 1140px" srcset="images/School_banner_6-p-500.png 500w, images/School_banner_6-p-800.png 800w, images/School_banner_6-p-1080.png 1080w, images/School_banner_6-p-1600.png 1600w, images/School_banner_6.png 1920w"
-                            alt=""></a>
-                    <a href="{url_main}/schools/srisawatwittayakarn-school-lanala" class="schoolbannerslink w-inline-block"><img src="images/School_banner_7.png" loading="lazy" sizes="(max-width: 479px) 98vw, (max-width: 767px) 95vw, (max-width: 991px) 728px, (max-width: 1439px) 100vw, 1140px" srcset="images/School_banner_7-p-500.png 500w, images/School_banner_7-p-800.png 800w, images/School_banner_7-p-1080.png 1080w, images/School_banner_7-p-1600.png 1600w, images/School_banner_7.png 1920w"
-                            alt=""></a>
-                    <a href="{url_main}/schools/rajaprajanugroh56-school-cookie-ten-bites" class="schoolbannerslink w-inline-block"><img src="images/School_banner_8.png" loading="lazy" sizes="(max-width: 479px) 98vw, (max-width: 767px) 95vw, (max-width: 991px) 728px, (max-width: 1439px) 100vw, 1140px" srcset="images/School_banner_8-p-500.png 500w, images/School_banner_8-p-800.png 800w, images/School_banner_8-p-1080.png 1080w, images/School_banner_8-p-1600.png 1600w, images/School_banner_8.png 1920w"
-                            alt=""></a>
-                    <a href="{url_main}/schools/munglee-school-lina" class="schoolbannerslink w-inline-block"><img src="images/School_banner_9.png" loading="lazy" sizes="(max-width: 479px) 98vw, (max-width: 767px) 95vw, (max-width: 991px) 728px, (max-width: 1439px) 100vw, 1140px" srcset="images/School_banner_9-p-500.png 500w, images/School_banner_9-p-800.png 800w, images/School_banner_9-p-1080.png 1080w, images/School_banner_9-p-1600.png 1600w, images/School_banner_9.png 1920w"
-                            alt=""></a>
-                </div>
-            </section>
-        </div>
-        <div data-w-tab="Tab 2" class="tabpane w-tab-pane">
-            <section class="pagedeail">
-
-                <div class="school-container">
-
-                    <h2 class="school-headertext">โรงเรียนที่เข้าร่วมโครงการเพาะพันธุ์ปัญญาแคมป์</h2>
-                    <p class="school-keytext">ทั้งหมด</p>
-
-
-
-
-                    <div class="grid-container">
-                        <!-- ชุดที่ 1 -->
-                        <div class="grid-item">
-                            <a href="{url_main}/schools/mueang-nplant">
-                                <img src="../images/2567/students/01-mueang/01-n-plant.png" alt="N-PLANT">
-                            </a>
-                            <p>ทีมอำเภอเมือง</p>
-                        </div>
-                
-                        <!-- ชุดที่ 2 -->
-                        <div class="grid-item">
-                            <a href="{url_main}/schools/thawungpa-spakaitee">
-                                <img src="../images/2567/students/02-tha-wang-pha/02-spakitee.png" alt="สปาไกตี้">
-                            </a>
-                            <p>ทีมอำเภอท่าวังผา</p>
-                        </div>
-                
-                        <!-- ชุดที่ 3 -->
-                        <div class="grid-item">
-                            <a href="{url_main}/schools/weangsa-puengpiknan">
-                                <img src="../images/2567/students/03-wiang-sa/03-pueangpiknan.png" alt="ผึ้งปิ๊กน่าน">
-                            </a>
-                            <p>ทีมอำเภอเวียงสา</p>
-                        </div>
-                
-                        <!-- ชุดที่ 4 -->
-                        <div class="grid-item">
-                            <a href="{url_main}/schools/bokluea-sanstyle">
-                                <img src="../images/2567/students/04-bo-kluea/04-sanstyle.png" alt="สานสไตล์">
-                            </a>
-                            <p>ทีมอำเภอบ่อเกลือ</p>
-                        </div>
-                
-                        <!-- ชุดที่ 5 -->
-                        <div class="grid-item">
-                            <a href="{url_main}/schools/phuphiang-freshhearb">
-                                <img src="../images/2567/students/05-phu-phiang/05-fresh-herb.png" alt="Fresh Herb น่านเจ้า">
-                            </a>
-                            <p>ทีมอำเภอภูเพียง</p>
-                        </div>
-                
-                        <!-- ชุดที่ 6 -->
-                        <div class="grid-item">
-                            <a href="{url_main}/schools/songkwae-krafturai">
-                                <img src="../images/2567/students/06-song-kwae/06-krafaurai.png" alt="คราฟท์อุไรซ์">
-                            </a>
-                            <p>ทีมอำเภอสองแคว</p>
-                        </div>
-                
-                        <!-- ชุดที่ 7 -->
-                        <div class="grid-item">
-                            <a href="{url_main}/schools/nanoi-thamtham">
-                                <img src="../images/2567/students/07-nanoi/07-tamtam.png" alt="แทมแทม">
-                            </a>
-                            <p>ทีมอำเภอนาน้อย</p>
-                        </div>
-                
-                        <!-- ชุดที่ 8 -->
-                        <div class="grid-item">
-                            <a href="{url_main}/schools/namuen-sillfeed">
-                                <img src="../images/2567/students/08-namuen/08-sillfeed.png" alt="SILL FEED">
-                            </a>
-                            <p>ทีมอำเภอนาหมื่น</p>
-                        </div>
-                
-                        <!-- ชุดที่ 9 -->
-                        <div class="grid-item">
-                            <a href="{url_main}/schools/pua-korkwan">
-                                <img src="../images/2567/students/09-pua/09-korkwean.png" alt="ข.แขว่น">
-                            </a>
-                            <p>ทีมอำเภอปัว</p>
-                        </div>
-                
-                        <!-- ชุดที่ 10 -->
-                        <div class="grid-item">
-                            <a href="{url_main}/schools/maecharim-instan">
-                                <img src="../images/2567/students/10-maecharim/10-InsTAN.png" alt="InsTAN">
-                            </a>
-                            <p>ทีมอำเภอแม่จริม</p>
-                        </div>
-                    </div>
-
-
-
-
-                  
-
-
-
-
-
-                </div>
-            </section>
+            </div>
         </div>
     </div>
-</div>
 
 
 
-<style>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            /* Default for desktop */
+            gap: 30px;
+            /* Gap for both desktop and iPad */
+            padding: 20px;
+        }
+        
+        .grid-item {
+            text-align: center;
+        }
+        
+        .grid-item img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .grid-item p {
+            font-size: 16px;
+            margin-top: 10px;
+            line-height: 18px;
+        }
+        /* Responsive for Mobile */
+        
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+                /* 2 items per row on mobile */
+                gap: 20px;
+                /* Gap for Mobile */
+            }
+            .grid-item p {
+                font-size: 16px;
+                /* Smaller font size for mobile */
+                display: block;
+                /* Keep description visible on mobile */
+            }
+        }
+        
+        @media (max-width: 479px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 items per row on mobile */
+                gap: 20px;
+                /* Gap for Mobile */
+            }
+            .grid-item p {
+                font-size: 16px;
+                /* Smaller font size for mobile */
+                display: block;
+                /* Keep description visible on mobile */
+            }
+        }
+    </style>
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Default for desktop */
-    gap: 30px; /* Gap for both desktop and iPad */
-    padding: 20px;
-}
 
-.grid-item {
-    text-align: center;
-}
+    <script>
+        // ฟังก์ชันตั้งค่า cookie
+        function setCookie(name, value, minutes) {
+            var date = new Date();
+            date.setTime(date.getTime() + (minutes * 60 * 1000));
+            var expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
 
-.grid-item img {
-    width: 100%;
-    height: auto;
-}
+        // ฟังก์ชันดึงค่า cookie
+        function getCookie(name) {
+            var cname = name + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var cookieArray = decodedCookie.split(';');
+            for (var i = 0; i < cookieArray.length; i++) {
+                var c = cookieArray[i].trim();
+                if (c.indexOf(cname) === 0) {
+                    return c.substring(cname.length, c.length);
+                }
+            }
+            return "";
+        }
 
-.grid-item p {
-    font-size: 20px;
-    margin-top: 10px;
-}
+        // ตั้งค่า cookie และรีเฟรชหน้าหลังจากคลิกที่แท็บ
+        document.getElementById('tab-all').onclick = function() {
+            setCookie('cookietab', 'all', 15);
+            location.reload();
+        };
 
-/* Responsive for Mobile */
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 items per row on mobile */
-        gap: 20px; /* Gap for Mobile */
-    }
-    .grid-item p {
-        font-size: 16px; /* Smaller font size for mobile */
-        display: block; /* Keep description visible on mobile */
-    }
-}
+        document.getElementById('tab-2566').onclick = function() {
+            setCookie('cookietab', '2566', 15);
+            location.reload();
+        };
 
-        </style>
-    
+        document.getElementById('tab-2567').onclick = function() {
+            setCookie('cookietab', '2567', 15);
+            location.reload();
+        };
+
+        // ตรวจสอบค่า cookie เมื่อโหลดหน้า
+        document.addEventListener('DOMContentLoaded', function() {
+            var cookietab = getCookie('cookietab') || 'all'; // ถ้าไม่มี cookie ให้ตั้งค่าเริ่มต้นเป็น 'all'
+            console.log('Current tab:', cookietab);
+
+            // เพิ่มโค้ดเพื่อแสดงข้อมูลตามค่า cookietab ที่ได้มา
+            if (cookietab === '2567') {
+                // โค้ดสำหรับการแสดงผล tab 2567
+            } else if (cookietab === '2566') {
+                // โค้ดสำหรับการแสดงผล tab 2566
+            } else {
+                // โค้ดสำหรับการแสดงผล tab ทั้งหมด
+            }
+        });
+    </script>

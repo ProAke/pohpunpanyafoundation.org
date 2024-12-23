@@ -11,6 +11,7 @@ $tpl->assignInclude("body", "template/_tp_index.html");
 $tpl->prepare();
 
 
+$tpl->assign("_ROOT.main_url", $url_main);
 
 
 // Set language session variable
@@ -22,117 +23,8 @@ if (isset($_POST['language'])) {
 
 FRONTLANGUAGE($_SESSION['lag']);
 
-// ... (rest of the code remains unchanged)
 
-// Fixed: CampProvince SQL Injection | 21122023 by P'Ake
-$arrayCampProvince = array();
-$query = "SELECT main.*,a.*
-    FROM `$tableCampProvince` as main 
-    LEFT JOIN `$tableCampProvinceDetail` as a ON a.ID_PROVINCE = main.ID
-    WHERE main.STATUS = 'Show' AND main.ID_MODEL = '1' AND a.LAG = ? 
-    ORDER BY main.ORDER ASC";
 
-// Use prepared statements
-$stmt = $conn->prepare($query);
-
-if ($stmt) {
-    $stmt->bind_param("s", $_SESSION['lag']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    while ($line = $result->fetch_assoc()) {
-        array_push($arrayCampProvince, '<a href="#" id="province' . $line['ID_PROVINCE'] . '" data-title="' . $line['TITLE'] . '" class="drp_province_list top w-dropdown-link" onclick="chooseCity(' . $line['ID_PROVINCE'] . ')" >' . $line['TITLE'] . '</a>');
-
-        $query2 = "SELECT main.*,a.*
-            FROM `$tableCampDistrict` as main 
-            LEFT JOIN `$tableCampDistrictDetail` as a ON a.ID_DISTRICT = main.ID
-            WHERE main.ID_MODEL = '1' AND main.ID_PROVINCE = ? AND a.LAG = ? AND  main.STATUS = 'Show' ORDER BY main.ORDER ASC";
-
-        // Use another prepared statement
-        $stmt2 = $conn->prepare($query2);
-
-        if ($stmt2) {
-            $stmt2->bind_param("ss", $line['ID'], $_SESSION['lag']);
-            $stmt2->execute();
-            $result2 = $stmt2->get_result();
-
-            while ($line2 = $result2->fetch_assoc()) {
-                $query3 = "SELECT * FROM `$tableCampSchool` WHERE `STATUS` = 'Show' AND `ID_MODEL` = '1' AND `ID_PROVINCE` = ? AND `ID_DISTRICT` = ?";
-                
-                // Another prepared statement
-                $stmt3 = $conn->prepare($query3);
-
-                if ($stmt3) {
-                    $stmt3->bind_param("ss", $line['ID_PROVINCE'], $line2['ID_DISTRICT']);
-                    $stmt3->execute();
-                    $result3 = $stmt3->get_result();
-
-                    if ($result3->num_rows > 1) {
-                        array_push($arrayCampProvince, '<a href="#" id="district' . $line2['ID_DISTRICT'] . '" data-title="' . $line2['TITLE'] . '" class="drp_province_list  w-dropdown-link" onclick="chooseDistrict(' . $line2['ID_DISTRICT'] . ')" >' . $line2['TITLE'] . '<span style="float: right;">' . $result3->num_rows . ' โรงเรียน</span></a>');
-                    } else {
-                        array_push($arrayCampProvince, '<a href="#" id="district' . $line2['ID_DISTRICT'] . '" data-title="' . $line2['TITLE'] . '" class="drp_province_list  w-dropdown-link" onclick="chooseDistrict(' . $line2['ID_DISTRICT'] . ')" >' . $line2['TITLE'] . '<span style="float: right;">' . $result3->num_rows . ' โรงเรียน </span></a>');
-                    }
-                }
-
-                $stmt3->close();
-            }
-
-            $stmt2->close();
-        }
-    }
-
-    $stmt->close();
-}
-
-$tpl->assign("_ROOT.arrayCampProvince", implode('', $arrayCampProvince));
-
-/////////////////////////////////////////////////
-$arrayCampSchool = array();
-$arrayCampSchoolDetail = array();
-$query = "SELECT main.*, a.*
-FROM `$tableCampSchool` as main 
-LEFT JOIN `$tableCampSchoolDetail` as a ON a.ID_SCHOOL = main.ID";
-$query .= " WHERE main.STATUS = 'Show' AND main.ID_MODEL = '1' AND a.LAG = ? ORDER BY main.ORDER ASC ";
-
-$stmt = $conn->prepare($query);
-$stmt->bind_param('s', $_SESSION['lag']);
-$stmt->execute();
-$result = $stmt->get_result();
-
-while ($line = $result->fetch_assoc()) {
-    $ex = explode('=', $line['LINK']);
-    array_push($arrayCampSchool, '<a href="' . $url_main . '/schools/' . $ex[1] . '" class="drp_school_list w-dropdown-link" onmouseover="viewSchool(' . $line['ID_SCHOOL'] . ');" onmouseout="closeViewSchhol();" style="display: block;">' . $line['TITLE'] . '</a>');
-}
-
-$tpl->assign("_ROOT.arrayCampSchool", implode('', $arrayCampSchool));
-$stmt->close();
-/////////////////////////////////////////////////
-
-$arrayCampMapMobile = array();
-$arrayCampMapTablet = array();
-$arrayCampMapPc = array();
-$noCampSchool = '0';
-$query = "SELECT * FROM `$tableCampSchool` as main 
-LEFT JOIN `$tableCampSchoolDetail` as a ON a.ID_SCHOOL = main.ID";
-$query .= " WHERE main.STATUS = 'Show' AND a.LAG = ? ORDER BY main.ORDER ASC ";
-
-$stmt = $conn->prepare($query);
-$stmt->bind_param('s', $_SESSION['lag']);
-$stmt->execute();
-$result = $stmt->get_result();
-
-while ($line = $result->fetch_assoc()) {
-    $noCampSchool++;
-    array_push($arrayCampMapMobile, '#tree' . $noCampSchool . ' {top: 0;left: 0;margin: ' . $line['MAP_MOBILE'] . ';}');
-    array_push($arrayCampMapTablet, '#tree' . $noCampSchool . ' {top: 0;left: 0;margin: ' . $line['MAP_TABLET'] . ';}');
-    array_push($arrayCampMapPc, '#tree' . $noCampSchool . ' {top: 0;left: 0;margin: ' . $line['MAP_PC'] . ';}');
-}
-
-$tpl->assign("_ROOT.arrayCampMapMobile", implode('', $arrayCampMapMobile));
-$tpl->assign("_ROOT.arrayCampMapTablet", implode('', $arrayCampMapTablet));
-$tpl->assign("_ROOT.arrayCampMapPc", implode('', $arrayCampMapPc));
-
-$stmt->close();
 /////////////////////////////////////////////////
 $arraySlide = array();
 $noSlide = '0';
@@ -159,28 +51,18 @@ $stmt->close();
 $tpl->assign("_ROOT.arraySlide", implode('', $arraySlide));
 
 
-/////////////////////////////////////////////////
 
 	$arraySlideVdo = array();
 	$SlideVdo = '0';
-
-
-
-
-
-    $lag = settype($_SESSION['lag'], "integer");
-
-	
-	$query = "SELECT main.*,a.*
+  $lag = settype($_SESSION['lag'], "integer");
+  $query = "SELECT main.*,a.*
 	FROM `$tableIndexSlideVdo` as main 
 	LEFT JOIN `$tableIndexSlideVdoDetail` as a ON a.ID_SLIDE = main.ID ";
 	$query .= " WHERE main.DEL = '0' AND main.STATUS = 'Show' AND a.LAG = '".$lag."' ORDER BY main.ORDER DESC ";
-
-
-	
 	$result = $conn->query($query);
 	while($line = $result->fetch_assoc()){
 		$SlideVdo++;
+    
 		array_push($arraySlideVdo, '<div class="pppy_slide1 w-slide">
             <a href="#" class="w-inline-block w-lightbox">
 			<img src="'.$url_main.'/upload/slideVdo/'.$line['BANNER_NAME'].'" width="100%" height="100%" 
@@ -216,14 +98,119 @@ $tpl->assign("_ROOT.arraySlideVdo",implode('', $arraySlideVdo));
 
 
 
+
+//--------------------------------------- all
+
+$query = "SELECT * FROM `tb_logo_brand` ORDER BY sort ASC";
+$result = $conn->query($query);
+while($line = $result->fetch_assoc()){
+    $tpl->newBlock("LOGOBRANDS");
+    $tpl->assign("brandImg",$line['logo_image']);
+}
+
+
+
+
+
+$query = "SELECT * FROM `Participants` 
+            WHERE role = 'กรรมการ' AND fname !='กัลย์ชฎารัตน์'
+            AND fname !='วรกันต์'
+            AND fname !='อารีย์'
+            GROUP BY fullname 
+            ORDER BY convert(fname using tis620) ASC 
+            LIMIT 5";
+$result = $conn->query($query);
+while($line = $result->fetch_assoc()){
+    $tpl->newBlock("ALN67");
+    $tpl->assign("FullName",$line['fullname']);
+    $tpl->assign("photoALN",$url_main."/upload/".$line['year']."/teachers/alumni/".$line['photo_aln']);
+    $tpl->assign("profilePOP",$url_main."/upload/".$line['year']."/teachers/profile/".$line['profile_pop']);  
+    $url_img = $url_main."/upload/".$line['year']."/teachers/popup/".$line['profile_pop'];
+    $popJS ='
+    {
+                                    "items": [{
+                                        "_id": "651a3040342015fefc8ab435",
+                                        "origFileName": "'.$line['photo_name'].'",
+                                        "fileName": "'.$line['photo_name'].'",
+                                        "fileSize": 270941,
+                                        "height": 1600,
+                                        "url": "'.$url_img.'",
+                                        "width": 800,
+                                        "caption": "'.$line['fullname'].'",
+                                        "type": "image"
+                                         }],
+                                        "group": "วิทยากร-all"
+                                }
+    ';
+$tpl->assign("profilePOP",$url_main."/upload/".$line['year']."/teachers/popup/".$line['profile_pop']);  
+$tpl->assign("popJS",$popJS);
+
+    
+    }
+    
+
+
+
+$query = "SELECT * FROM `Participants` 
+            WHERE role = 'วิทยากร' 
+            GROUP BY fullname 
+            ORDER BY convert(fname using tis620) ASC 
+            LIMIT 5";
+$result = $conn->query($query);
+while($line = $result->fetch_assoc()){ 
+        $tpl->newBlock("ALN66");
+        $tpl->assign("Year",$line['year']);
+        $tpl->assign("FullName",$line['fullname']);
+        $tpl->assign("photoALN",$url_main."/upload/".$line['year']."/teachers/alumni/".$line['photo_aln']);
+        $tpl->assign("profilePOP",$line['profile_pop']);   
+
+
+        $url_img = $url_main."/upload/".$line['year']."/teachers/popup/".$line['profile_pop'];
+        $popJS ='
+        {
+                                        "items": [{
+                                            "_id": "651a3040342015fefc8ab435",
+                                            "origFileName": "'.$line['profile_pop'].'",
+                                            "fileName": "'.$line['profile_pop'].'",
+                                            "fileSize": 270941,
+                                            "height": 1600,
+                                            "url": "'.$url_img.'",
+                                            "width": 800,
+                                            "caption": "'.$line['fullname'].'",
+                                            "type": "image"
+                                             }],
+                                            "group": "กรรมการ-all"
+                                    }
+        ';
+    $tpl->assign("profilePOP",$url_main."/upload/".$line['year']."/teachers/popup/".$line['profile_pop']);  
+    $tpl->assign("popJS",$popJS);
+    
+
+
+
+
+
+
+}
+
+
+//----------------
+
+
+
+
 if($_SESSION['lagText']=="EN"){
-	$arrayNewsCategory = array('<a href="'.$url_main.'/news" class="nag-button w-button">News</a>','<a href="'.$url_main.'/blog" class="nag-button w-button">Blog</a>','<a href="'.$url_main.'/gallery" class="nag-button w-button">Gallery</a>');
+	$arrayNewsCategory = array('<a href="'.$url_main.'/news" class="nag-button w-button">News</a>',
+  '<a href="'.$url_main.'/blog" class="nag-button w-button">Blog</a>',
+  '<a href="'.$url_main.'/gallery" class="nag-button w-button">Gallery</a>',
+  '<a href="'.$url_main.'/vdogallery" class="nag-button w-button">VDO Gallery</a>');
 }else{
-	$arrayNewsCategory = array('<a href="'.$url_main.'/ข่าวสารกิจกรรม" class="nag-button w-button">ข่าวสาร</a>','<a href="'.$url_main.'/บทความ" class="nag-button w-button">บทความ</a>','<a href="'.$url_main.'/แกลเลอรี" class="nag-button w-button">แกลเลอรี</a>');
+	$arrayNewsCategory = array('<a href="'.$url_main.'/ข่าวสาร" class="nag-button w-button">ข่าวสาร</a>','<a href="'.$url_main.'/บทความ" class="nag-button w-button">บทความ</a>',
+  '<a href="'.$url_main.'/รูปภาพแกลลอรี" class="nag-button w-button">รูปภาพแกลลอรี</a>',
+  '<a href="'.$url_main.'/วีดีโอแกลลอรี" class="nag-button w-button">วิดีโอแกลลอรี</a>');
 }
 
 $tpl->assign("_ROOT.arrayNewsCategory",implode('', $arrayNewsCategory));
-
 
 $query = "SELECT main.*,a.TITLE_".$_SESSION['lagText']." as TITLECAT
 FROM `$tableNews` as main 
@@ -246,14 +233,16 @@ while($line = $result->fetch_assoc()){
 	}
 
 
-	
-	
 }
 
 
+##########
+if(isset($_POST['language'])){$_SESSION['lag'] = $_POST['language'];}
+elseif(!isset($_SESSION['lag'])){$_SESSION['lag'] = '1';}
+else{}
+FRONTLANGUAGE($_SESSION['lag']);
 
+
+FRONTPAGESEO('1',$_SESSION['lag']);
 $tpl->printToScreen();
-
-
-
 ?>

@@ -22,29 +22,22 @@ FRONTLANGUAGE($_SESSION['lag']);
 
 
 
-// $arrayNewsCategory = array();
-// $query = "SELECT * FROM `$tableNewsCategory` ORDER BY `ORDER` ASC ";
-// $result = $conn->query($query);
-
-// while($line = $result->fetch_assoc()){
-    
-//     if($line['ID']==1){$active=" active";}
-// 	array_push($arrayNewsCategory, '<a href="'.$line['URL'].'" class="nag-button w-button'.$active.'" >'.$line['TITLE_'.$_SESSION['lagText']].'</a>');
-//     $active="";
-// }
-
-
-
 if($_SESSION['lagText']=="EN"){
+
+	$tpl->assign("_ROOT.page_title","News");
+	$tpl->assign("_ROOT.NewsAndMedia", "News and Media");
 	$arrayNewsCategory = array('<a href="'.$url_main.'/news" class="nag-button w-button active">News</a>',
 	'<a href="'.$url_main.'/blog" class="nag-button w-button">Blog</a>',
-	'<a href="'.$url_main.'/gallery" class="nag-button w-button">Gallery</a>',	
+	'<a href="'.$url_main.'/photo-gallery" class="nag-button w-button">Photo Gallery</a>',	
 	'<a href="'.$url_main.'/vdo-gallery" class="nag-button w-button">VDO Gallery</a>');
 }else{
+
+	$tpl->assign("_ROOT.page_title","ข่าวสาร");
+	$tpl->assign("_ROOT.NewsAndMedia", "ข่าวสารและมีเดีย");
 	$arrayNewsCategory = array('<a href="'.$url_main.'/ข่าวสารกิจกรรม" class="nag-button w-button active">ข่าวสาร</a>',
 	'<a href="'.$url_main.'/บทความ" class="nag-button w-button">บทความ</a>',
-	'<a href="'.$url_main.'/แกลเลอรี" class="nag-button w-button">แกลเลอรี</a>',
-	'<a href="'.$url_main.'/วิดีโอแกลเลอรี" class="nag-button w-button">วิดีโอแกลเลอรี</a>');
+	'<a href="'.$url_main.'/รูปภาพแกลลอรี" class="nag-button w-button">รูปภาพแกลลอรี</a>',
+	'<a href="'.$url_main.'/วิดีโอแกลลอรี" class="nag-button w-button">วิดีโอแกลลอรี</a>');
 }
 
 
